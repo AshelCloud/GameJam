@@ -57,6 +57,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 84af4c552c7fc8343b5445ee471b887d, type: 3}
+    - target: {fileID: 613728733438722081, guid: abe05dd0498eaa44596295a063ea1af7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1317935043800945148, guid: abe05dd0498eaa44596295a063ea1af7, type: 3}
       propertyPath: m_Name
       value: DroneController
