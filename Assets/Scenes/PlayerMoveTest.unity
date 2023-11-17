@@ -438,9 +438,9 @@ GameObject:
   - component: {fileID: 1388281888}
   - component: {fileID: 1388281887}
   - component: {fileID: 1388281886}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall
-  m_TagString: CLIMBWALL
+  m_TagString: WALL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
