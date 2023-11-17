@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private float m_DistToWall = 0.1f;
 
-    private bool m_IsRight = false;
+    public bool m_IsRight = false;
 
     [SerializeField]
     private LayerMask m_GrondLayerMask;
@@ -130,5 +130,9 @@ public class Player : MonoBehaviour
         bool ret = Physics2D.Raycast(transform.position, -Vector3.up, m_DistToGround, m_GrondLayerMask);
 
         return ret;
+    }
+    public bool GetisRight()
+    {
+        return m_IsRight;
     }
 }
