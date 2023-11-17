@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 439244726}
   - component: {fileID: 439244725}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 6
+  perceptionRange: 0.55
   canClimb: 0
 --- !u!61 &439244725
 BoxCollider2D:
@@ -439,7 +440,7 @@ GameObject:
   - component: {fileID: 1388281886}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: CLIMBWALL
+  m_TagString: WALL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
