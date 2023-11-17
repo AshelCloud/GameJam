@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,7 +8,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D m_Rigidbody;
     private BoxCollider2D m_BoxCollider;
-    private SpriteRenderer m_SpriteRenderer;
+    private Animator m_Animator;
 
     [SerializeField]
     private float m_Speed = 5.0f;
@@ -18,26 +19,48 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float m_ClimingSpeed = 5.0f;
 
-    private bool m_IsGrouned = false;
-    private bool m_IsCliming = false;
+    [SerializeField]
+    private float m_DistToGround = 0.1f;
+
+    private float m_DistToWall = 0.1f;
+
+    private bool m_IsRight = false;
+
+    [SerializeField]
+    private LayerMask m_GrondLayerMask;
 
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_BoxCollider= GetComponent<BoxCollider2D>();
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_Animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        m_DistToWall = m_BoxCollider.bounds.extents.x;
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     private void Update()
     {
-        Move();
+        if (IsGrounded())
+        {
+            m_Animator.SetBool("SideWalk", false);
+            m_Animator.SetBool("SideIdle", true);
+        }
+        m_Animator.SetBool("Jump", !IsGrounded());
 
-        if(m_IsGrouned)
+        if(IsGrounded())
         {
             Jump();
         }
 
-        if(m_IsCliming)
+        if (CanCliming())
         {
             Climing();
         }
@@ -48,24 +71,24 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             m_Rigidbody.AddForce(Vector2.up * m_JumpPower, ForceMode2D.Impulse);
-            m_IsGrouned = false;
         }
     }
 
     private void Move()
     {
-        Vector2 move = new Vector2(0f, m_Rigidbody.velocity.y);
-        if(Input.GetKey(KeyCode.A))
+        float h = Input.GetAxisRaw("Horizontal");
+        m_Rigidbody.velocity = new Vector2(h * m_Speed, m_Rigidbody.velocity.y);
+
+        if(h == 0f)
         {
-            move.x = -m_Speed;
-            m_SpriteRenderer.flipX = false;
+            m_Animator.SetBool("Walk", false);
         }
-       else  if(Input.GetKey(KeyCode.D))
+        else
         {
-            move.x = m_Speed;
-            m_SpriteRenderer.flipX = true;
+            m_IsRight = h > 0f;
+            m_Animator.SetFloat("IsRight", m_IsRight ? 1f : 0f);
+            m_Animator.SetBool("Walk", true);
         }
-        m_Rigidbody.velocity = move;
     }
 
     private void Climing()
@@ -80,30 +103,32 @@ public class Player : MonoBehaviour
             move.y = -m_ClimingSpeed;
         }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            m_Rigidbody.AddForce(Vector2.right * m_JumpPower, ForceMode2D.Impulse);
+        }
+
+        m_Animator.SetBool("SideWalk", move != Vector2.zero);
+
         m_Rigidbody.velocity = move;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private bool CanCliming()
     {
-        if (collision.GetComponent<Tilemap>())
-        {
-            m_IsGrouned = true;
-        }
+        Vector2 dir = m_IsRight ? Vector2.right : Vector2.left;
+
+        bool ret = Physics2D.Raycast(transform.position, dir, m_DistToWall + 0.1f, m_GrondLayerMask);
+
+        m_Animator.SetBool("SideIdle", ret);
+        m_Animator.SetBool("SideWalk", ret);
+
+        return ret;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool IsGrounded()
     {
-        if(m_IsGrouned == false)
-        {
-            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-            {
-                m_IsCliming = true;
-            }
-        }
-    }
+        bool ret = Physics2D.Raycast(transform.position, -Vector3.up, m_DistToGround, m_GrondLayerMask);
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        m_IsCliming = false;
+        return ret;
     }
 }
