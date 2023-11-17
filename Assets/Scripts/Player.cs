@@ -143,4 +143,9 @@ public class Player : MonoBehaviour
     {
         return m_IsRight;
     }
+
+    public void GetDamage()
+    {
+
+    }
 }
