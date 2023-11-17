@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,7 +8,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D m_Rigidbody;
     private BoxCollider2D m_BoxCollider;
-    private SpriteRenderer m_SpriteRenderer;
+    private Animator m_Animator;
 
     [SerializeField]
     private float m_Speed = 5.0f;
@@ -18,21 +19,28 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float m_ClimingSpeed = 5.0f;
 
-    private bool m_IsGrouned = false;
+    private float m_DistToGround = 0.1f;
+
     private bool m_IsCliming = false;
+
+    [SerializeField]
+    private LayerMask m_GrondLayerMask;
 
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_BoxCollider= GetComponent<BoxCollider2D>();
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_Animator = GetComponent<Animator>();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     private void Update()
     {
-        Move();
-
-        if(m_IsGrouned)
+        if(IsGrounded())
         {
             Jump();
         }
@@ -48,28 +56,32 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             m_Rigidbody.AddForce(Vector2.up * m_JumpPower, ForceMode2D.Impulse);
-            m_IsGrouned = false;
         }
     }
 
     private void Move()
     {
-        Vector2 move = new Vector2(0f, m_Rigidbody.velocity.y);
-        if(Input.GetKey(KeyCode.A))
+        float h = Input.GetAxisRaw("Horizontal");
+        m_Rigidbody.velocity = new Vector2(h * m_Speed, m_Rigidbody.velocity.y);
+
+        if(h == 0f)
         {
-            move.x = -m_Speed;
-            m_SpriteRenderer.flipX = false;
+            m_Animator.SetBool("Walk", false);
         }
-       else  if(Input.GetKey(KeyCode.D))
+        else
         {
-            move.x = m_Speed;
-            m_SpriteRenderer.flipX = true;
+            FlipX(h > 0f);
+            m_Animator.SetBool("Walk", true);
         }
-        m_Rigidbody.velocity = move;
     }
 
     private void Climing()
     {
+        if(IsGrounded())
+        {
+            return;
+        }
+
         Vector2 move = Vector2.zero;
         if (Input.GetKey(KeyCode.W))
         {
@@ -83,17 +95,9 @@ public class Player : MonoBehaviour
         m_Rigidbody.velocity = move;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Tilemap>())
-        {
-            m_IsGrouned = true;
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(m_IsGrouned == false)
+        if(IsGrounded() == false)
         {
             if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
@@ -105,5 +109,26 @@ public class Player : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         m_IsCliming = false;
+    }
+
+    List<SpriteRenderer> m_SpriteRenderers;
+    private void FlipX(bool flipX)
+    {
+        if(m_SpriteRenderers == null)
+        {
+            m_SpriteRenderers= new List<SpriteRenderer>();
+            m_SpriteRenderers = GetComponentsInChildren<SpriteRenderer>().ToList();
+        }
+
+        foreach(var renderer in m_SpriteRenderers) 
+        {
+            renderer.flipX = flipX;
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        bool ret = Physics2D.Raycast(transform.position, -Vector3.up, m_DistToGround, m_GrondLayerMask);
+        return ret;
     }
 }
