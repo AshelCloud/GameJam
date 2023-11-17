@@ -131,4 +131,9 @@ public class Player : MonoBehaviour
 
         return ret;
     }
+
+    public void GetDamage()
+    {
+
+    }
 }
