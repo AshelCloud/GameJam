@@ -19,9 +19,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float m_ClimingSpeed = 5.0f;
 
+    [SerializeField]
     private float m_DistToGround = 0.1f;
 
-    private bool m_IsCliming = false;
+    private float m_DistToWall = 0.1f;
+
+    private bool m_IsRight = false;
 
     [SerializeField]
     private LayerMask m_GrondLayerMask;
@@ -33,6 +36,11 @@ public class Player : MonoBehaviour
         m_Animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        m_DistToWall = m_BoxCollider.bounds.extents.x;
+    }
+
     private void FixedUpdate()
     {
         Move();
@@ -40,12 +48,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (IsGrounded())
+        {
+            m_Animator.SetBool("SideWalk", false);
+            m_Animator.SetBool("SideIdle", true);
+        }
+        m_Animator.SetBool("Jump", !IsGrounded());
+
         if(IsGrounded())
         {
             Jump();
         }
 
-        if(m_IsCliming)
+        if (CanCliming())
         {
             Climing();
         }
@@ -70,18 +85,14 @@ public class Player : MonoBehaviour
         }
         else
         {
-            FlipX(h > 0f);
+            m_IsRight = h > 0f;
+            m_Animator.SetFloat("IsRight", m_IsRight ? 1f : 0f);
             m_Animator.SetBool("Walk", true);
         }
     }
 
     private void Climing()
     {
-        if(IsGrounded())
-        {
-            return;
-        }
-
         Vector2 move = Vector2.zero;
         if (Input.GetKey(KeyCode.W))
         {
@@ -92,43 +103,32 @@ public class Player : MonoBehaviour
             move.y = -m_ClimingSpeed;
         }
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            m_Rigidbody.AddForce(Vector2.right * m_JumpPower, ForceMode2D.Impulse);
+        }
+
+        m_Animator.SetBool("SideWalk", move != Vector2.zero);
+
         m_Rigidbody.velocity = move;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool CanCliming()
     {
-        if(IsGrounded() == false)
-        {
-            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-            {
-                m_IsCliming = true;
-            }
-        }
-    }
+        Vector2 dir = m_IsRight ? Vector2.right : Vector2.left;
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        m_IsCliming = false;
-    }
+        bool ret = Physics2D.Raycast(transform.position, dir, m_DistToWall + 0.1f, m_GrondLayerMask);
 
-    List<SpriteRenderer> m_SpriteRenderers;
-    private void FlipX(bool flipX)
-    {
-        if(m_SpriteRenderers == null)
-        {
-            m_SpriteRenderers= new List<SpriteRenderer>();
-            m_SpriteRenderers = GetComponentsInChildren<SpriteRenderer>().ToList();
-        }
+        m_Animator.SetBool("SideIdle", ret);
+        m_Animator.SetBool("SideWalk", ret);
 
-        foreach(var renderer in m_SpriteRenderers) 
-        {
-            renderer.flipX = flipX;
-        }
+        return ret;
     }
 
     private bool IsGrounded()
     {
         bool ret = Physics2D.Raycast(transform.position, -Vector3.up, m_DistToGround, m_GrondLayerMask);
+
         return ret;
     }
 }
