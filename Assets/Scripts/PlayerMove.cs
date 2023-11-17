@@ -76,7 +76,7 @@ public class PlayerMove : MonoBehaviour
     {
         
 
-        return false;
+        return true;
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
