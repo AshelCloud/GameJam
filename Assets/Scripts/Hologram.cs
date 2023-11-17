@@ -6,13 +6,16 @@ public class Hologram : MonoBehaviour
 {
     private Rigidbody2D rb;
     private bool hasCollided = false;
+    [SerializeField]
     private float throwAngle = 45f; // 던질 각도
+    [SerializeField]
     private float throwForce = 10f; // 던질 힘
+    [SerializeField]
     private float fixedHeight = 5f; // 고정된 높이
+    [SerializeField]
     private float fixedDistance = 10f; // 고정된 거리
     private int rightThrow = 0;
     private Player player;
-    private BoxCollider2D boxcollider;
 
     void Start()
     {
