@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private float m_DistToWall = 0.1f;
 
-    private bool m_IsRight = false;
+    public bool m_IsRight = false;
 
     [SerializeField]
     private float m_DownSpeed = 1f;
@@ -139,9 +139,8 @@ public class Player : MonoBehaviour
 
         return ret;
     }
-
-    public void GetDamage()
+    public bool GetisRight()
     {
-
+        return m_IsRight;
     }
 }
