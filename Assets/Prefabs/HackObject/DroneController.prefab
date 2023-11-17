@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3268879675060264245}
   - component: {fileID: 434604879539663705}
   - component: {fileID: -6000059291383325424}
+  - component: {fileID: 3463910599078260011}
   m_Layer: 0
   m_Name: DroneController
   m_TagString: Untagged
@@ -98,11 +99,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b99764c62310c48892cd8210aec064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HackingButton: {fileID: 8460845724934124658}
+  m_HackingButtonPrefab: {fileID: 6768926875319442544, guid: c14c595b48d603248a677715c185e9fd, type: 3}
   sprites:
   - {fileID: 21300000, guid: f730d375098b4124793d6dabac58494f, type: 3}
   - {fileID: 21300000, guid: 84af4c552c7fc8343b5445ee471b887d, type: 3}
-  controlledDrone: {fileID: 0}
+  m_ControlledDrones:
+  - {fileID: 0}
+--- !u!61 &3463910599078260011
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317935043800945148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.66, y: 1.4}
+    newSize: {x: 1.66, y: 1.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.66, y: 1.4}
+  m_EdgeRadius: 0
 --- !u!1001 &1198526639433596212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,6 +202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hacking Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6509787603882558566, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -165,14 +216,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1740186783684558101, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
   m_PrefabInstance: {fileID: 1198526639433596212}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8460845724934124658 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7334380252994242886, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
-  m_PrefabInstance: {fileID: 1198526639433596212}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ed5a34958798c4b966de5cb51d9f1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
