@@ -695,6 +695,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 69416850}
     m_Modifications:
     - target: {fileID: -6000059291383325424, guid: abe05dd0498eaa44596295a063ea1af7, type: 3}
+      propertyPath: controlledDrone
+      value: 
+      objectReference: {fileID: 736588411}
+    - target: {fileID: -6000059291383325424, guid: abe05dd0498eaa44596295a063ea1af7, type: 3}
+      propertyPath: m_ControlledDrones.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6000059291383325424, guid: abe05dd0498eaa44596295a063ea1af7, type: 3}
       propertyPath: m_ControlledDrones.Array.data[0]
       value: 
       objectReference: {fileID: 736588411}
@@ -18019,11 +18027,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 385845828021055168, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 180.83
+      value: 190.24
       objectReference: {fileID: 0}
     - target: {fileID: 385845828021055168, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 539.29
+      value: 481.67
       objectReference: {fileID: 0}
     - target: {fileID: 385845828021055168, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18055,11 +18063,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 385845828021055168, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -326
+      value: -321.29
       objectReference: {fileID: 0}
     - target: {fileID: 385845828021055168, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -322
+      value: -350.81
       objectReference: {fileID: 0}
     - target: {fileID: 385845828021055168, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18079,7 +18087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920824693485918937, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_Size.y
-      value: 501.7918
+      value: 472.48862
       objectReference: {fileID: 0}
     - target: {fileID: 8920824693485918937, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_Offset.x
@@ -18087,7 +18095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920824693485918937, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_Offset.y
-      value: -4.197235
+      value: -18.848831
       objectReference: {fileID: 0}
     - target: {fileID: 8997342652577162744, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_Name
