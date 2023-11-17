@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 542673193}
   m_Layer: 6
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -944,6 +944,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3606742926787661980, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3606742926787661980, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3913982386476518968, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
