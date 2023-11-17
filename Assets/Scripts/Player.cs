@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
@@ -147,5 +148,10 @@ public class Player : MonoBehaviour
     public void GetDamage()
     {
 
+    }
+
+    public void Die()
+    {
+        SceneManager.LoadScene("Game");
     }
 }

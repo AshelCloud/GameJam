@@ -27,8 +27,10 @@ public class Drone : MonsterObject
     [SerializeField]
     float patrolSpeed = 2f;
 
-    Vector3 rightsidePos;
-    Vector3 leftsidePos;
+    Vector3 m_MoveDir = Vector3.zero;
+
+    [SerializeField]
+    private float PatrolTime = 1f;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -36,9 +38,6 @@ public class Drone : MonsterObject
         base.Start();
         perceptionRangeRender = transform.Find("PerceptionRange").gameObject.GetComponent<SpriteRenderer>();
         originalColor = perceptionRangeRender.color;
-
-        rightsidePos = transform.TransformDirection(transform.Find("RightPoint").transform.position);
-        leftsidePos = transform.TransformDirection(transform.Find("LeftPoint").transform.position);
 
         StartCoroutine(Patrol());
     }
@@ -48,6 +47,11 @@ public class Drone : MonsterObject
         base.Found();
 
         StartCoroutine(RecognizePlayer());
+    }
+
+    private void FixedUpdate()
+    {
+            transform.position += m_MoveDir * patrolSpeed * Time.deltaTime;
     }
 
     IEnumerator RecognizePlayer()
@@ -64,8 +68,8 @@ public class Drone : MonsterObject
 
         if (time >= recognizeDuration)
         {
-            targetObj.GetComponent<PlayerComponentCtrl>().StopAllComponent();
-            targetObj.GetComponent<SpriteRenderer>().GetComponent<SpriteRenderer>().color = Color.red;
+            //targetObj.GetComponent<PlayerComponentCtrl>().StopAllComponent();
+            targetObj.GetComponent<Player>().Die();
         }
         else
         {
@@ -75,46 +79,19 @@ public class Drone : MonsterObject
         }
     }
 
-    IEnumerator Patrol()
+    private IEnumerator Patrol()
     {
-        while (!perceptRange.GetPerception())
+        while(true)
         {
-            switch (side)
-            {
-                case PatrolSide.Right:
-                    MoveToRightPoint();
-                    break;
-                case PatrolSide.Left:
-                    MoveToLeftPoint();
-                    break;
-            }
-            yield return null;
-        }
-    }
+            m_MoveDir = Vector3.right;
+            transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
 
-    void MoveToRightPoint()
-    {
-        if(Vector3.Distance(transform.position, rightsidePos) > 1.0f)
-        {
-            transform.position += Vector3.right * patrolSpeed * Time.deltaTime;
-        }
-        else
-        {
-            transform.Rotate(0, 180, 0);
-            side = PatrolSide.Left;
-        }
-    }
+            yield return new WaitForSeconds(PatrolTime);
 
-    void MoveToLeftPoint()
-    {
-        if (Vector3.Distance(transform.position, leftsidePos) > 1.0f)
-        {
-            transform.position -= Vector3.right * patrolSpeed * Time.deltaTime;
-        }
-        else
-        {
-            transform.Rotate(0, 180, 0);
-            side = PatrolSide.Right;
+            m_MoveDir = -Vector3.right;
+            transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
+
+            yield return new WaitForSeconds(PatrolTime);
         }
     }
 

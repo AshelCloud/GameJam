@@ -11,13 +11,30 @@ public class Car : MonoBehaviour
     [SerializeField]
     private float m_MoveSpeed = 1f;
 
-    private void Start()
+    private bool m_IsRun = false;
+
+    private Player m_Player = null;
+    private bool m_CarryPlayer = false;
+    private bool m_Done = false;
+
+    private void Update()
     {
-        Run();
+        if(m_CarryPlayer)
+        {
+            m_Player.transform.position = transform.position;
+        }
+
     }
 
     public void Run()
     {
+        if(m_IsRun)
+        {
+            return;
+        }
+
+        m_CarryPlayer = true;
+        m_IsRun = true;
         StartCoroutine(StartRun());
     }
 
@@ -34,6 +51,23 @@ public class Car : MonoBehaviour
 
                 yield return new WaitForEndOfFrame();
             }
+        }
+
+        m_Done = true;
+        m_CarryPlayer = false;
+
+        m_Player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(m_Player == null)
+        {
+            m_Player = collision.GetComponent<Player>();
+        }
+        if (m_Player)
+        {
+            Run();
         }
     }
 }
