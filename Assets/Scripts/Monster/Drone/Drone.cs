@@ -117,4 +117,9 @@ public class Drone : MonsterObject
             side = PatrolSide.Right;
         }
     }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 }
