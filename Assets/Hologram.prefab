@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7376084749043303824}
   - component: {fileID: 3306831420589706006}
   - component: {fileID: 4411891210905999136}
-  - component: {fileID: 915872391925709118}
+  - component: {fileID: 1651479172829985008}
   m_Layer: 0
   m_Name: Hologram
   m_TagString: Hologram
@@ -149,7 +149,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!114 &915872391925709118
+--- !u!114 &1651479172829985008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,3 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5aa69a6da17c44d926d25b5f9df24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwAngle: 45
+  throwForce: 10
+  fixedHeight: 5
+  fixedDistance: 10

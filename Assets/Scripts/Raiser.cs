@@ -17,15 +17,15 @@ public class Raiser : MonoBehaviour
     {
         m_Target = GameObject.Find("Player").GetComponent<Player>();
 
+        dir = (m_Target.transform.position - transform.position).normalized;
+        LookAt2D(dir);
+
         StartCoroutine(Damage());
     }
 
     public void Run()
     {
         m_Run = true;
-
-        dir = (m_Target.transform.position - transform.position).normalized;
-        LookAt2D(dir);
     }
 
     private void Update()
