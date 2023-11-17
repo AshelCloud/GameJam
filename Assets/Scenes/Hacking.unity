@@ -572,8 +572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3b9b982dd1fdc438f52de4dae136c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
-  canClimb: 0
 --- !u!114 &2035377042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,8 +596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dd4963cb9d34542a8350052f061390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoveComp: {fileID: 2035377041}
-  playerHitComp: {fileID: 2035377042}
 --- !u!1 &2129491387
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ public class Raiser : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        m_Target.GetDamage();
+        //m_Target.GetDamage();
 
         Destroy(gameObject);
     }
