@@ -8,14 +8,18 @@ public class DroneController : HackableObject
     Sprite[] sprites;
 
     [SerializeField]
-    GameObject controlledDrone;
+    List<GameObject> m_ControlledDrones;
 
     protected override void Hacking()
     {
         base.Hacking();
 
         transform.GetComponent<SpriteRenderer>().sprite = sprites[1];
-        controlledDrone.GetComponent<Drone>().enabled = false;
-        controlledDrone.transform.Find("PerceptionRange").gameObject.SetActive(false);
+
+        foreach(var controlledDrone in m_ControlledDrones)
+        {
+            controlledDrone.GetComponent<Drone>().enabled = false;
+            controlledDrone.transform.Find("PerceptionRange").gameObject.SetActive(false);
+        }
     }
 }
