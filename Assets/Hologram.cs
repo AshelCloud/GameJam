@@ -16,10 +16,11 @@ public class Hologram : MonoBehaviour
 
     void Start()
     {
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
+        player = FindObjectOfType<Player>(); // Player °´Ã¼ ÇÒ´ç
+        if (player == null)
         {
-            player = playerObject.GetComponent<Player>();
+            Debug.LogError("Player object not found!");
+            return;
         }
         rb = GetComponent<Rigidbody2D>();
         ThrowObject();
