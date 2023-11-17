@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 7412605216521215725}
   - component: {fileID: 2607156551906576394}
   m_Layer: 5
-  m_Name: Restricted
+  m_Name: Restricted Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
