@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     private bool m_IsRight = false;
 
     [SerializeField]
+    private float m_DownSpeed = 1f;
+
+    [SerializeField]
     private LayerMask m_GrondLayerMask;
 
     private void Awake()
@@ -48,6 +51,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if(IsGrounded() == false)
+        {
+            m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y - m_DownSpeed);
+        }
+
         if (IsGrounded())
         {
             m_Animator.SetBool("SideWalk", false);
@@ -70,7 +78,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_Rigidbody.AddForce(Vector2.up * m_JumpPower, ForceMode2D.Impulse);
+            m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, m_JumpPower);
         }
     }
 
