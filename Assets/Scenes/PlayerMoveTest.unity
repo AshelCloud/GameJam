@@ -1513,6 +1513,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8920824693485918937, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
+      propertyPath: m_Size.x
+      value: 289.20407
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920824693485918937, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
+      propertyPath: m_Size.y
+      value: 121.2746
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920824693485918937, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.9273224
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920824693485918937, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
+      propertyPath: m_Offset.y
+      value: -3.054512
+      objectReference: {fileID: 0}
     - target: {fileID: 8997342652577162744, guid: 1d71c3817d7e2144c9335f866c12e2c5, type: 3}
       propertyPath: m_Name
       value: Restricted Board

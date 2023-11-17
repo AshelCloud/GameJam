@@ -17,15 +17,15 @@ public class Raiser : MonoBehaviour
     {
         m_Target = GameObject.Find("Player").GetComponent<Player>();
 
-        dir = (m_Target.transform.position - transform.position).normalized;
-        LookAt2D(dir);
-
         StartCoroutine(Damage());
     }
 
     public void Run()
     {
         m_Run = true;
+
+        dir = (m_Target.transform.position - transform.position).normalized;
+        LookAt2D(dir);
     }
 
     private void Update()
@@ -40,7 +40,7 @@ public class Raiser : MonoBehaviour
 
     protected void LookAt2D(Vector3 dir)
     {
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90);
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
     }
 
     private IEnumerator Damage()
