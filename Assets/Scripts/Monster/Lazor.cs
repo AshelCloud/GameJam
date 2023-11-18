@@ -37,13 +37,16 @@ public class Lazor : MonsterObject
     {
         base.Found();
 
+        if (targetObj == null)
+            return;
+
         StartCoroutine(KillPlayer());
     }
 
     IEnumerator KillPlayer()
     {
         float time = 0f;
-        while (perceptRange.GetPerception() && time < recognizeDuration)
+        while (perceptRange.GetPerception() && time < recognizeDuration && targetObj.gameObject.tag == "Player")
         {
             Color lerpedColor = Color.Lerp(originalColor, recognizeColor, time / recognizeDuration);
             perceptionRangeRender.color = lerpedColor;
@@ -69,6 +72,7 @@ public class Lazor : MonsterObject
         while(true)
         {
             yield return new WaitUntil(() => !perceptRange.GetPerception());
+
             switch (state)
             {
                 case LazorState.ON:
