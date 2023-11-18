@@ -10,6 +10,7 @@ public class Hologram : MonoBehaviour
     private float fixedHeight = 5f; // 고정된 높이
     private float fixedDistance = 10f; // 고정된 거리
     private int rightThrow = 0;
+
     private Player player;
     [SerializeField]
     private GameObject hologram;
