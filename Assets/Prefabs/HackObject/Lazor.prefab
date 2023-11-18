@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3394602850725311134}
   - component: {fileID: 7231368264832567249}
   - component: {fileID: 4190363293070515888}
+  - component: {fileID: 8071200211897896078}
   m_Layer: 0
   m_Name: LazorController
   m_TagString: Untagged
@@ -102,6 +103,51 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 342c8da87313f0743b3018515b0f18f9, type: 3}
   - {fileID: 21300000, guid: dc7717516988cb14cad389169f54b67f, type: 3}
   controlledLazor: {fileID: 884107484885163354}
+--- !u!61 &8071200211897896078
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939432058736506658}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.71, y: 0.63}
+    newSize: {x: 0.71, y: 0.63}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.71, y: 0.63}
+  m_EdgeRadius: 0
 --- !u!1 &5593611274771241882
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hacking Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6509787603882558566, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6977485749093293208, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -261,8 +311,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5952559356395223269, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6495
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952559356395223269, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.2348
       objectReference: {fileID: 0}
     - target: {fileID: 5952559356395223269, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
       propertyPath: m_LocalPosition.y
@@ -324,8 +378,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 4198322542470663303}
     m_Modifications:
     - target: {fileID: 2176916647106544842, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6495
+      objectReference: {fileID: 0}
+    - target: {fileID: 2176916647106544842, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.2348
       objectReference: {fileID: 0}
     - target: {fileID: 2176916647106544842, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
       propertyPath: m_LocalPosition.y
@@ -390,8 +448,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 4198322542470663303}
     m_Modifications:
     - target: {fileID: 3154862092149166232, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6495
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154862092149166232, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.2348
       objectReference: {fileID: 0}
     - target: {fileID: 3154862092149166232, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
       propertyPath: m_LocalPosition.y

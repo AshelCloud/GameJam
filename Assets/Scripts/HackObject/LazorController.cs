@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LazorController : HackableObject
 {
@@ -19,7 +20,33 @@ public class LazorController : HackableObject
     {
         base.Hacking();
 
+        if(SceneManager.GetActiveScene().name == "Game_Boss")
+        {
+            StartCoroutine(RunHack());
+        }
+        else
+        {
+            Disable();
+        }
+    }
+
+    private void Disable()
+    {
         transform.GetComponent<SpriteRenderer>().sprite = sprites[1];
         controlledLazor.SetActive(false);
+    }
+
+    private IEnumerator RunHack()
+    {
+        controlledLazor.SetActive(false);
+
+        yield return new WaitForSeconds(3f);
+
+        Disable();
+    }
+
+    private void AttackBoss()
+    {
+
     }
 }
