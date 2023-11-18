@@ -39,14 +39,16 @@ public class LazorController : HackableObject
     private IEnumerator RunHack()
     {
         controlledLazor.SetActive(false);
+        AttackBoss();
 
         yield return new WaitForSeconds(3f);
 
         Disable();
+
     }
 
     private void AttackBoss()
     {
-
+        Instantiate(Resources.Load("Objects/BossAttack_Lazer"), transform.position, Quaternion.identity);
     }
 }
