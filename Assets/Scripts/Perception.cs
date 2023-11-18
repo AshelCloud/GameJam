@@ -12,6 +12,12 @@ public class Perception : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
+        if(coll.gameObject.tag == "HoloPlayer")
+        {
+            isRecognize = true;
+            target = coll.gameObject;
+            //µå·Ð Á×´Â °Í.
+        }
         if(coll.gameObject.tag == "Player")
         {
             isRecognize = true;

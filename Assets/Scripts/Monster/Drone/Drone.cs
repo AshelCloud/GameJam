@@ -68,8 +68,15 @@ public class Drone : MonsterObject
 
         if (time >= recognizeDuration)
         {
+            if(targetObj.CompareTag("HoloPlayer"))
+            {
+                Destroy(gameObject); //µå·Ð Æø¹ß 
+            }
+            if(targetObj.CompareTag("Player"))
+            {
+                targetObj.GetComponent<Player>().Die();
+            }
             //targetObj.GetComponent<PlayerComponentCtrl>().StopAllComponent();
-            targetObj.GetComponent<Player>().Die();
         }
         else
         {
