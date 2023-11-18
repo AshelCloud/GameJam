@@ -18,6 +18,7 @@ public class Chat : MonoBehaviour
 
         m_EndIsClose = endIsClose;
         m_OriginText = text;
+        m_CurrentText = "";
         gameObject.SetActive(true);
 
         StartCoroutine(TextOpen());
