@@ -41,8 +41,11 @@ public class Tnt : MonoBehaviour
             if (col.CompareTag("Enemy") || col.CompareTag("HackObject") || col.CompareTag("BombObject"))
             {
                 //이펙트 추가필요
-                Destroy(col.gameObject); // Enemy 오브젝트 삭제
-                Destroy(gameObject);
+                if(col.gameObject.GetComponent<ExplodableObject>())
+                {
+                    col.gameObject.GetComponent<ExplodableObject>().ExplodeObj();
+                }
+                transform.GetComponent<ExplodableObject>().ExplodeObj();
             }
 
             if(col.CompareTag("Boss"))

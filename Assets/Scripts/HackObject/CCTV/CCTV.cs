@@ -12,9 +12,6 @@ public class CCTV : HackableObject
     [SerializeField]
     Color hackedColor;
 
-    [SerializeField]
-    ParticleSystem particleObj;
-
     [SerializeField] float zommOutSize = 12f;
     [SerializeField] float zoomOutStayTime = 5f;
     [SerializeField] float zoomOutTime = 1f;
@@ -58,11 +55,5 @@ public class CCTV : HackableObject
             yield return null;
         }
         Camera.main.orthographicSize = originalSize;
-    }
-
-    public void Explode()
-    {
-        Destroy(gameObject);
-        particleObj.Play();
     }
 }

@@ -19,12 +19,23 @@ public class DroneController : HackableObject
         transform.GetComponent<SpriteRenderer>().sprite = sprites[1];
         transform.GetComponent<SpriteRenderer>().color = hackedColor;
 
-        foreach(var controlledDrone in m_ControlledDrones)
-        {
-            controlledDrone.GetComponent<Drone>().enabled = false;
-            controlledDrone.transform.Find("PerceptionRange").gameObject.SetActive(false);
-        }
+        StopControlledDrones();
 
         this.enabled = false;
+    }
+
+    void StopControlledDrones()
+    {
+        foreach (var controlledDrone in m_ControlledDrones)
+        {
+            if (controlledDrone != null)
+                controlledDrone.GetComponent<Drone>().StopDrone();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        StopControlledDrones();
+        Debug.Log("정상적으로 드론 작동를 중지시킴");
     }
 }
