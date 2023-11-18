@@ -43,4 +43,12 @@ public class BossArm : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<Player>())
+        {
+            collision.GetComponent<Player>().Die();
+        }
+    }
 }

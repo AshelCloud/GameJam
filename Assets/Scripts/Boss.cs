@@ -33,6 +33,12 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private List<Transform> m_ArmPoses = new List<Transform>();
 
+    [SerializeField]
+    private BoxCollider2D m_LeftHand;
+
+    [SerializeField]
+    private BoxCollider2D m_RightHand;
+
     private Animator m_Animator;
 
     private bool m_IsAttacking = false;
@@ -46,6 +52,9 @@ public class Boss : MonoBehaviour
 
     private IEnumerator Start()
     {
+        m_LeftHand.enabled = false;
+        m_RightHand.enabled = false;
+
         yield return new WaitUntil(() => BossScene.Instance.IsStart);
         StartCoroutine(Patrol());
         StartCoroutine(Attack());
@@ -110,21 +119,37 @@ public class Boss : MonoBehaviour
     {
         if (m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f)
         {
+            m_LeftHand.enabled = true;
             GameObject go  = Instantiate(Resources.Load<GameObject>("Particles/Explosion"), m_ExplosionPoint_L.position, Quaternion.identity);
             Camera.main.GetComponent<CameraShake>().Run(0.1f, 0.1f);
             Destroy(go.gameObject, 1.5f);
+
+            StartCoroutine(DisableHand());
         }
         else
         {
+            m_RightHand.enabled = true;
             GameObject go = Instantiate(Resources.Load<GameObject>("Particles/Explosion"), m_ExplosionPoint_R.position, Quaternion.identity);
             Camera.main.GetComponent<CameraShake>().Run(0.1f, 0.1f);
             Destroy(go.gameObject, 1.5f);
+
+            StartCoroutine(DisableHand());
         }
     }
+
+    private IEnumerator DisableHand()
+    {
+        yield return new WaitForSeconds(0.1f);
+        m_LeftHand.enabled = false;
+        m_RightHand.enabled = false;
+    }
+
+    public bool m_IsRushing;
 
     private IEnumerator Rush()
     {
         m_IsAttacking = true;
+        m_IsRushing = true;
 
         GameObject player = GameObject.Find("Player");
         Transform target = null;
@@ -166,6 +191,7 @@ public class Boss : MonoBehaviour
         Camera.main.GetComponent<CameraShake>().Run(0.5f, 0.5f);
         m_Animator.SetBool("Attack2", false);
         m_IsAttacking = false;
+        m_IsRushing = false;
 
         for (int i = 0; i < 3; i ++)
         {
@@ -206,5 +232,16 @@ public class Boss : MonoBehaviour
 
         m_Animator.SetBool("Attack3", false);
         m_IsAttacking = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<Player>())
+        {
+            if(m_IsRushing)
+            {
+                collision.GetComponent<Player>().Die();
+            }
+        }
     }
 }

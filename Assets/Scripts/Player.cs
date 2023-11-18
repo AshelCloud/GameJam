@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -190,8 +191,48 @@ public class Player : MonoBehaviour
 
     }
 
+    private bool m_IsDie = false;
+
     public void Die()
     {
-        SceneManager.LoadScene("Game");
+        if(m_IsDie == false)
+        {
+            m_IsDie = true;
+            StartCoroutine(StartDie());
+        }
+    }
+
+    private IEnumerator StartDie()
+    {
+        Camera.main.GetComponent<FollowCamera>().enabled = true;
+        if(Camera.main.GetComponent<CameraShake>())
+        {
+            Camera.main.GetComponent<CameraShake>().m_Shakeable = false;
+        }
+
+        GameObject go = Instantiate(Resources.Load<GameObject>("Objects/FadeOut"));
+        m_Animator.SetBool("Die", true);
+
+        StartCoroutine(CameraZoomIn());
+
+        yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private IEnumerator CameraZoomIn()
+    {
+        while(true)
+        {
+            Camera.main.orthographicSize -= 5f * Time.deltaTime;
+
+            if(3f > Camera.main.orthographicSize )
+            {
+                Camera.main.orthographicSize = 3f;
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

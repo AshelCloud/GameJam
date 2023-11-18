@@ -6,6 +6,8 @@ public class CameraShake : MonoBehaviour
 {
     private Vector3 m_OriginPos = Vector3.zero;
 
+    public bool m_Shakeable = true;
+
     private void Start()
     {
         m_OriginPos = transform.position;
@@ -13,7 +15,10 @@ public class CameraShake : MonoBehaviour
 
     public void Run(float shakeAmount, float shakeTime)
     {
-        StartCoroutine(Shake(shakeAmount, shakeTime));
+        if(m_Shakeable)
+        {
+            StartCoroutine(Shake(shakeAmount, shakeTime));
+        }
     }
 
     IEnumerator Shake(float ShakeAmount, float ShakeTime)
