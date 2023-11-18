@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -100}
-  m_SizeDelta: {x: -1728, y: -1005}
+  m_AnchoredPosition: {x: -56, y: -47}
+  m_SizeDelta: {x: -864.65, y: -469.26}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3908561623253491688
 CanvasRenderer:
@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -130, y: -99}
+  m_AnchoredPosition: {x: -0.5, y: -1.5700378}
+  m_SizeDelta: {x: -72.04, y: -51.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6011483402793580353
 CanvasRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 72a16498feea35c4f8ba049a86d5dfa6, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -186,7 +186,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2003241776479078961
 CanvasRenderer:
@@ -217,7 +217,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 72a16498feea35c4f8ba049a86d5dfa6, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -237,13 +237,14 @@ GameObject:
   - component: {fileID: 93761258093057900}
   - component: {fileID: 7986694320338121676}
   - component: {fileID: 3214523216785922781}
+  - component: {fileID: 7564991922691662361}
   m_Layer: 5
   m_Name: CCTV Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &93761258093057900
 RectTransform:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1112, y: 642}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7986694320338121676
 CanvasRenderer:
@@ -303,3 +304,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7564991922691662361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863895822823629180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7766501aef8e92d4c8ff708a17cc8c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

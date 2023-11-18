@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f730d375098b4124793d6dabac58494f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84af4c552c7fc8343b5445ee471b887d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,10 +101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HackingButtonPrefab: {fileID: 6768926875319442544, guid: c14c595b48d603248a677715c185e9fd, type: 3}
   sprites:
-  - {fileID: 21300000, guid: f730d375098b4124793d6dabac58494f, type: 3}
   - {fileID: 21300000, guid: 84af4c552c7fc8343b5445ee471b887d, type: 3}
+  - {fileID: 21300000, guid: f730d375098b4124793d6dabac58494f, type: 3}
   m_ControlledDrones:
   - {fileID: 0}
+  - {fileID: 0}
+  hackedColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
 --- !u!61 &3463910599078260011
 BoxCollider2D:
   m_ObjectHideFlags: 0
