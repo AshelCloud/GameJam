@@ -6,7 +6,14 @@ using UnityEngine.UIElements;
 
 public class Tnt : MonoBehaviour
 {
+    private CursorManager m_CursorManager;
+
     public float explosionRadius = 5f; // 폭발 반경 설정
+
+    private void Start()
+    {
+        m_CursorManager = Camera.main.GetComponent<CursorManager>();
+    }
 
     void Update()
     {
@@ -25,10 +32,11 @@ public class Tnt : MonoBehaviour
         foreach (Collider2D col in colliders)
         {
             // Enemy 태그를 가진 오브젝트인지 확인
-            if (col.CompareTag("Enemy"))
+            if (col.CompareTag("Enemy") || col.CompareTag("HackObject") || col.CompareTag("BombObject"))
             {
                 //이펙트 추가필요
                 Destroy(col.gameObject); // Enemy 오브젝트 삭제
+                Destroy(gameObject);
             }
         }
     }
@@ -38,5 +46,15 @@ public class Tnt : MonoBehaviour
         // 폭발 범위를 시각적으로 보여줌 (Scene 뷰에서만 보임)
         Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+    private void OnMouseOver()
+    {
+        m_CursorManager.SetCursorManager("Cursor_Bomb");
+    }
+
+    private void OnMouseExit()
+    {
+        m_CursorManager.SetCursorManager("Cursor_Default");
     }
 }
