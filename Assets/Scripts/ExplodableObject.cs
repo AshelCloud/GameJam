@@ -12,4 +12,6 @@ public class ExplodableObject : MonoBehaviour
         Instantiate(particleObj, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
+
+    public ParticleSystem GetParticle() { return particleObj;}
 }
