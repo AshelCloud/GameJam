@@ -34,6 +34,9 @@ public class Boss : MonoBehaviour
     private List<Transform> m_ArmPoses = new List<Transform>();
 
     [SerializeField]
+    private Transform m_Center;
+
+    [SerializeField]
     private BoxCollider2D m_LeftHand;
 
     [SerializeField]
@@ -56,7 +59,6 @@ public class Boss : MonoBehaviour
         m_RightHand.enabled = false;
 
         yield return new WaitUntil(() => BossScene.Instance.IsStart);
-        StartCoroutine(Patrol());
         StartCoroutine(Attack());
     }
 
@@ -64,22 +66,11 @@ public class Boss : MonoBehaviour
     {
         if(m_IsAttacking == false)
         {
+            dir = ((m_Center.position + Vector3.right * Random.Range(-5f, 5f) ) - transform.position).normalized;
+            dir.y = 0f;
+            dir.z = 0f;
+
             transform.position += dir * m_PatrolSpeed * Time.deltaTime;
-        }
-    }
-
-    private IEnumerator Patrol()
-    {
-        while(true)
-        {
-            dir = Vector3.right;
-
-            yield return new WaitForSeconds(m_PatrolTime);
-
-            dir = Vector3.left;
-
-            yield return new WaitForSeconds(m_PatrolTime);
-
         }
     }
 
@@ -248,5 +239,33 @@ public class Boss : MonoBehaviour
     public void GetDamage(float damage)
     {
         Debug.Log("Damaged");
+
+        StartCoroutine(RedBlink());
+    }
+
+    private IEnumerator RedBlink()
+    {
+        for(int i = 0; i < 5; i ++)
+        {
+            foreach(Transform child in transform)
+            {
+                if(child.GetComponent<SpriteRenderer>())
+                {
+                    child.GetComponent<SpriteRenderer>().color = Color.red;
+                }
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            foreach (Transform child in transform)
+            {
+                if (child.GetComponent<SpriteRenderer>())
+                {
+                    child.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
