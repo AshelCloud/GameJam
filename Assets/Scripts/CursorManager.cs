@@ -7,6 +7,18 @@ public class CursorManager : MonoBehaviour
     [SerializeField]
     List<Texture2D> cursors;
 
+    public static CursorManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        SetCursorManager("Cursor_Default");
+    }
+
     public void SetCursorManager(string cursorName)
     {
         Texture2D currentCursor = null;

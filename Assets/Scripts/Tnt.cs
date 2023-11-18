@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 
 public class Tnt : MonoBehaviour
 {
-    private CursorManager m_CursorManager;
-
     public float explosionRadius = 5f; // 폭발 반경 설정
 
     void Update()
@@ -46,6 +44,11 @@ public class Tnt : MonoBehaviour
                 Destroy(col.gameObject); // Enemy 오브젝트 삭제
                 Destroy(gameObject);
             }
+
+            if(col.CompareTag("Boss"))
+            {
+                col.GetComponent<Boss>().GetDamage(30f);
+            }
         }
     }
 
@@ -58,11 +61,11 @@ public class Tnt : MonoBehaviour
 
     private void OnMouseOver()
     {
-        m_CursorManager.SetCursorManager("Cursor_Bomb");
+        CursorManager.Instance.SetCursorManager("Cursor_Bomb");
     }
 
     private void OnMouseExit()
     {
-        m_CursorManager.SetCursorManager("Cursor_Default");
+        CursorManager.Instance.SetCursorManager("Cursor_Default");
     }
 }
