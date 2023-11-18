@@ -22,9 +22,9 @@ public class BossScene : MonoBehaviour
         {
             Camera.main.orthographicSize += m_CameraSpeed * Time.deltaTime;
 
-            if(Camera.main.orthographicSize >= 11f)
+            if(Camera.main.orthographicSize >= 16f)
             {
-                Camera.main.orthographicSize = 11f;
+                Camera.main.orthographicSize = 16f;
                 break;
             }
 
