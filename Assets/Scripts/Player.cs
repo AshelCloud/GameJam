@@ -47,31 +47,71 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if(SceneManager.GetActiveScene().name == "Game_Boss")
+        {
+            if(BossScene.Instance.IsStart)
+            {
+                Move();
+            }
+        }
+        else
+        {
+            Move();
+        }
     }
 
     private void Update()
     {
-        if(IsGrounded() == false)
+        if (SceneManager.GetActiveScene().name == "Game_Boss")
         {
-            m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y - m_DownSpeed);
-        }
+            if (BossScene.Instance.IsStart)
+            {
+                if (IsGrounded() == false)
+                {
+                    m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y - m_DownSpeed);
+                }
 
-        if (IsGrounded())
-        {
-            m_Animator.SetBool("SideWalk", false);
-            m_Animator.SetBool("SideIdle", true);
-        }
-        m_Animator.SetBool("Jump", !IsGrounded());
+                if (IsGrounded())
+                {
+                    m_Animator.SetBool("SideWalk", false);
+                    m_Animator.SetBool("SideIdle", true);
+                }
+                m_Animator.SetBool("Jump", !IsGrounded());
 
-        if(IsGrounded())
-        {
-            Jump();
-        }
+                if (IsGrounded())
+                {
+                    Jump();
+                }
 
-        if (CanCliming())
+                if (CanCliming())
+                {
+                    Climing();
+                }
+            }
+        }
+        else
         {
-            Climing();
+            if (IsGrounded() == false)
+            {
+                m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.y - m_DownSpeed);
+            }
+
+            if (IsGrounded())
+            {
+                m_Animator.SetBool("SideWalk", false);
+                m_Animator.SetBool("SideIdle", true);
+            }
+            m_Animator.SetBool("Jump", !IsGrounded());
+
+            if (IsGrounded())
+            {
+                Jump();
+            }
+
+            if (CanCliming())
+            {
+                Climing();
+            }
         }
     }
 
