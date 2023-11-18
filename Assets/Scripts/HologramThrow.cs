@@ -21,6 +21,7 @@ public class HologramThrow : MonoBehaviour
         // 마우스 왼쪽 버튼을 클릭하면 홀로그램을 던집니다.
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("버튼눌림요");
             if(currentusedHG < maxusedHg)
             {
                 Instantiate(grenadePrefab, throwtf.position, Quaternion.identity);
