@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class WindZone : MonoBehaviour
 {
-    public float fanForce = 10f; // 선풍기가 가할 힘
-    public float fanRange = 5f; // 선풍기의 범위
-
-    public Vector2 fanDirection = Vector2.right; // 선풍기가 가리키는 방향
+    [SerializeField]
+    private float fanForce = 20f; // 선풍기가 가할 힘
+    [SerializeField]
+    private float fanRange = 8f; // 선풍기의 범위
+    public bool windon = true;
+    [SerializeField]
+    private Vector2 fanDirection = Vector2.right; // 선풍기가 가리키는 방향
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && windon)
         {
             Vector2 directionToPlayer = other.transform.position - transform.position;
             float distance = directionToPlayer.magnitude;
