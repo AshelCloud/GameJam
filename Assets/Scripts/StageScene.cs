@@ -15,9 +15,10 @@ public class StageScene : MonoBehaviour
     [SerializeField]
     private Vector3 targetPosition;
 
-    private bool hasRunOnce = false;
     private bool fadein = false;
     public bool stageStart = false;
+
+    private static bool hasOnce = false;
 
     private void Awake()
     {
@@ -26,31 +27,36 @@ public class StageScene : MonoBehaviour
 
     private IEnumerator Start()
     {
-        Camera.main.GetComponent<FollowCamera>().enabled = false;
-        while (true)
+        if (hasOnce == false)
         {
-            Camera.main.orthographicSize += 2f * cameraSpeed * Time.deltaTime;
-
-            if(Camera.main.orthographicSize >= 29f)
+            Camera.main.GetComponent<FollowCamera>().enabled = false;
+            while (true)
             {
-                break;
-            }
-            yield return null;
-        }
+                Camera.main.orthographicSize += 2f * cameraSpeed * Time.deltaTime;
 
-        Camera.main.GetComponent<FollowCamera>().enabled = true;
-        while (true)
-        {
-            Camera.main.orthographicSize -= 8f* cameraSpeed * Time.deltaTime;
-            if(Camera.main.orthographicSize <= 7f)
-            {
-                Camera.main.orthographicSize = 7f;
-                this.transform.position = targetPosition;
-                fadein = true;
-                break;
+                if (Camera.main.orthographicSize >= 29f)
+                {
+                    break;
+                }
+                yield return null;
             }
 
-            yield return null;
+            Camera.main.GetComponent<FollowCamera>().enabled = true;
+            while (true)
+            {
+                Camera.main.orthographicSize -= 8f * cameraSpeed * Time.deltaTime;
+                if (Camera.main.orthographicSize <= 7f)
+                {
+                    Camera.main.orthographicSize = 7f;
+                    this.transform.position = targetPosition;
+                    fadein = true;
+
+                    hasOnce = true;
+                    break;
+                }
+
+                yield return null;
+            }
         }
     }
 

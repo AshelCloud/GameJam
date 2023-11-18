@@ -387,6 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 121121393}
   - component: {fileID: 121121392}
+  - component: {fileID: 121121394}
   m_Layer: 0
   m_Name: GameScene
   m_TagString: Untagged
@@ -422,6 +423,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121121394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121121391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5007fea66ae5ad241aa2ae227f7bba41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSpeed: 2
+  moveSpeed: 2
+  player: {fileID: 1954839967}
+  targetPosition: {x: 0, y: 0, z: 0}
+  stageStart: 0
 --- !u!1001 &180395420
 PrefabInstance:
   m_ObjectHideFlags: 0
