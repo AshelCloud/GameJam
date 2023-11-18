@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WindZone : MonoBehaviour
+{
+    public float fanForce = 10f; // 선풍기가 가할 힘
+    public float fanRange = 5f; // 선풍기의 범위
+
+    public Vector2 fanDirection = Vector2.right; // 선풍기가 가리키는 방향
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Vector2 directionToPlayer = other.transform.position - transform.position;
+            float distance = directionToPlayer.magnitude;
+
+            if (distance <= fanRange)
+            {
+                // 플레이어에게 힘을 가합니다.
+                other.GetComponent<Rigidbody2D>().AddForce(fanDirection * fanForce);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // 범위를 시각적으로 표시합니다.
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, fanRange);
+    }
+}
