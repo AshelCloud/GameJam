@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    private Vector3 m_OriginPos = Vector3.zero;
+
+    private void Start()
+    {
+        m_OriginPos = transform.position;
+    }
+
     public void Run(float shakeAmount, float shakeTime)
     {
         StartCoroutine(Shake(shakeAmount, shakeTime));
@@ -11,19 +18,16 @@ public class CameraShake : MonoBehaviour
 
     IEnumerator Shake(float ShakeAmount, float ShakeTime)
     {
-        GetComponent<FollowCamera>().enabled = false;
-
         float timer = 0;
         while (timer <= ShakeTime)
         {
-            Vector3 pos = (Vector3)UnityEngine.Random.insideUnitCircle * ShakeAmount;
+            Vector3 pos = m_OriginPos + (Vector3)UnityEngine.Random.insideUnitCircle * ShakeAmount;
             pos.z = -10;
             Camera.main.transform.position = pos;
             timer += Time.deltaTime;
             yield return null;
         }
 
-        Camera.main.transform.position = new Vector3(0f, 0f, -10f);
-        GetComponent<FollowCamera>().enabled = true;
+        Camera.main.transform.position = m_OriginPos;
     }
 }
