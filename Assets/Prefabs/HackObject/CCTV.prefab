@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 750090905490797235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.03, y: -8.06, z: 0.6155597}
+  m_LocalPosition: {x: 5.03, y: -8.06, z: 0}
   m_LocalScale: {x: 1.327, y: 1.327, z: 1.327}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -104,9 +104,9 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 555395f8a8881ab408084fe0018f3191, type: 3}
   - {fileID: 21300000, guid: 3663c1fb66a2bca4eb941d5a27f2b125, type: 3}
-  zoomPanel: {fileID: 0}
+  zoomPanel: {fileID: 7863895822823629180, guid: 2c3dd5e9cf1fee046ad145437c5d4920, type: 3}
   hackedColor: {r: 0.4528302, g: 0.4506942, b: 0.4506942, a: 1}
-  zommOutSize: 12
+  zommOutSize: 15
   zoomOutStayTime: 4.55
   zoomOutTime: 0.7
   zoomInTime: 0.7

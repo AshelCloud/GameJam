@@ -36,6 +36,5 @@ public class DroneController : HackableObject
     private void OnDestroy()
     {
         StopControlledDrones();
-        Debug.Log("정상적으로 드론 작동를 중지시킴");
     }
 }

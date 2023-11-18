@@ -30,14 +30,10 @@ public class StageScene : MonoBehaviour
         if (hasOnce == false)
         {
             Camera.main.GetComponent<FollowCamera>().enabled = false;
-            while (true)
+            while (Camera.main.orthographicSize < 29f)
             {
                 Camera.main.orthographicSize += 2f * cameraSpeed * Time.deltaTime;
 
-                if (Camera.main.orthographicSize >= 29f)
-                {
-                    break;
-                }
                 yield return null;
             }
 

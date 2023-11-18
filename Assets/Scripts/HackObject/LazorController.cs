@@ -34,6 +34,7 @@ public class LazorController : HackableObject
     {
         transform.GetComponent<SpriteRenderer>().sprite = sprites[1];
         controlledLazor.SetActive(false);
+        this.enabled = false;
     }
 
     private IEnumerator RunHack()

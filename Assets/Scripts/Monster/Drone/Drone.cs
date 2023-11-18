@@ -13,7 +13,7 @@ enum PatrolSide
 public class Drone : MonsterObject
 {
     [SerializeField]
-    PatrolSystem patrolSystem;
+    DronePatrol patrolSystem;
 
     SpriteRenderer perceptionRangeRender;
     SpriteRenderer myRenderer;
@@ -26,7 +26,6 @@ public class Drone : MonsterObject
 
     [SerializeField] float recognizeDuration = 1f;
     [SerializeField] float patrolSpeed = 2f;
-    [SerializeField] float PatrolTime = 1f;
 
     PatrolSide patrolSide;
     Vector3 m_MoveDir;
@@ -42,7 +41,13 @@ public class Drone : MonsterObject
         myRenderer = transform.GetComponent<SpriteRenderer>();
         originalColor = perceptionRangeRender.color;
 
-        switch(patrolSystem.direction)
+        if(patrolSystem.isPatrol)
+            OperatePatrol();
+    }
+
+    void OperatePatrol()
+    {
+        switch (patrolSystem.direction)
         {
             case PatrolDirection.Horizontal:
                 patrolSide = patrolSystem.tr[0].position.x > transform.position.x ? PatrolSide.Right : PatrolSide.Left;
@@ -92,7 +97,7 @@ public class Drone : MonsterObject
 
     private void FixedUpdate()
     {
-            transform.position += m_MoveDir * patrolSpeed * Time.deltaTime;
+        transform.position += m_MoveDir * patrolSpeed * Time.deltaTime;
     }
 
     IEnumerator RecognizePlayer()
