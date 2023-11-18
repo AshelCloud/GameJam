@@ -106,8 +106,10 @@ public class Drone : MonsterObject
         }
     }
 
-    private void OnDisable()
+    public void StopDrone()
     {
         StopAllCoroutines();
+        transform.Find("PerceptionRange").gameObject.SetActive(false);
+        this.enabled = false;
     }
 }
