@@ -32,12 +32,16 @@ public class Drone : MonsterObject
     [SerializeField]
     private float PatrolTime = 1f;
 
+    private float originalScaleX;
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         perceptionRangeRender = transform.Find("PerceptionRange").gameObject.GetComponent<SpriteRenderer>();
         originalColor = perceptionRangeRender.color;
+
+        originalScaleX = transform.localScale.x;
 
         StartCoroutine(Patrol());
     }
@@ -91,12 +95,12 @@ public class Drone : MonsterObject
         while(true)
         {
             m_MoveDir = Vector3.right;
-            transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(originalScaleX, transform.localScale.y, transform.localScale.z);
 
             yield return new WaitForSeconds(PatrolTime);
 
             m_MoveDir = -Vector3.right;
-            transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-originalScaleX, transform.localScale.y, transform.localScale.z);
 
             yield return new WaitForSeconds(PatrolTime);
         }
