@@ -44,6 +44,13 @@ public class Player : MonoBehaviour
     private void Start()
     {
         m_DistToWall = m_BoxCollider.bounds.extents.x;
+
+        m_Speed = 9f;
+        m_JumpPower = 14.5f;
+        m_ClimingSpeed = 11.5f;
+        m_DistToGround = 0.1f;
+
+        m_DownSpeed = 0.07f;
     }
 
     private void FixedUpdate()
