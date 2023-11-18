@@ -12,7 +12,18 @@ public class Portal : MonoBehaviour
     {
         if(collision.GetComponent<Player>())
         {
-            SceneManager.LoadScene(m_SceneName);
+            StartCoroutine(LoadScene());
         }
+    }
+
+    private IEnumerator LoadScene()
+    {
+        Vector3 pos = Camera.main.transform.position;
+        pos.z = 0f;
+        Instantiate(Resources.Load<GameObject>("Objects/FadeOut_Order"), pos, Quaternion.identity);
+
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene(m_SceneName);
     }
 }
