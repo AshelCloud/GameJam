@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd06f32a8f87094185a8a22298f39a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HackingButton: {fileID: 7116967645124388652}
+  m_HackingButtonPrefab: {fileID: 6768926875319442544, guid: c14c595b48d603248a677715c185e9fd, type: 3}
   sprites:
   - {fileID: 21300000, guid: 342c8da87313f0743b3018515b0f18f9, type: 3}
   - {fileID: 21300000, guid: dc7717516988cb14cad389169f54b67f, type: 3}
@@ -244,17 +244,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1740186783684558101, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
   m_PrefabInstance: {fileID: 507921211994074730}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7116967645124388652 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7334380252994242886, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
-  m_PrefabInstance: {fileID: 507921211994074730}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01ed5a34958798c4b966de5cb51d9f1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3342090077986809607
 PrefabInstance:
   m_ObjectHideFlags: 0
