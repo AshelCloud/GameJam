@@ -25,10 +25,11 @@ public class Tnt : MonoBehaviour
         foreach (Collider2D col in colliders)
         {
             // Enemy 태그를 가진 오브젝트인지 확인
-            if (col.CompareTag("Enemy"))
+            if (col.CompareTag("Enemy")|| col.CompareTag("HackObject")|| col.CompareTag("BombObject"))
             {
                 //이펙트 추가필요
                 Destroy(col.gameObject); // Enemy 오브젝트 삭제
+                Destroy(gameObject);
             }
         }
     }
