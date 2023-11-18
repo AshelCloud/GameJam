@@ -71,4 +71,9 @@ public class Tnt : MonoBehaviour
     {
         CursorManager.Instance.SetCursorManager("Cursor_Default");
     }
+
+    private void OnDestroy()
+    {
+        CursorManager.Instance.SetCursorManager("Cursor_Default");
+    }
 }

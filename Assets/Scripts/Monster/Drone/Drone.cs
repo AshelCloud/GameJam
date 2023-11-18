@@ -10,6 +10,7 @@ enum PatrolSide
 public class Drone : MonsterObject
 {
     SpriteRenderer perceptionRangeRender;
+    SpriteRenderer myRenderer;
 
     public bool recognizeComplete;
 
@@ -17,6 +18,9 @@ public class Drone : MonsterObject
 
     [SerializeField]
     Color recognizeColor;
+
+    [SerializeField]
+    Color StopColor;
 
     [SerializeField]
     float recognizeDuration = 1f;
@@ -39,6 +43,7 @@ public class Drone : MonsterObject
     {
         base.Start();
         perceptionRangeRender = transform.Find("PerceptionRange").gameObject.GetComponent<SpriteRenderer>();
+        myRenderer = transform.GetComponent<SpriteRenderer>();
         originalColor = perceptionRangeRender.color;
 
         originalScaleX = transform.localScale.x;
@@ -110,6 +115,7 @@ public class Drone : MonsterObject
     {
         StopAllCoroutines();
         transform.Find("PerceptionRange").gameObject.SetActive(false);
+        myRenderer.color = StopColor;
         this.enabled = false;
     }
 }

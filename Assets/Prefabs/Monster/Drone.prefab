@@ -312,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recognizeComplete: 0
   recognizeColor: {r: 1, g: 0, b: 0, a: 0.5686275}
+  StopColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   recognizeDuration: 0.3
   side: 1
   patrolSpeed: 4
