@@ -2876,13 +2876,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1167973384936505259, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167973384936505259, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bf5cc86b7af011b4990471782d1d179d, type: 2}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.5
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.8
+      value: -11.5
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2894,15 +2902,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2947,6 +2955,10 @@ PrefabInstance:
     - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_ClimingSpeed
       value: 11.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362398744959882823, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7955799812967198329, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18712,7 +18724,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1138674676}
   - {fileID: 69416850}
-  - {fileID: 1603747676}
   - {fileID: 1675605083}
   - {fileID: 1433336854}
   - {fileID: 957458790}
@@ -18722,3 +18733,4 @@ SceneRoots:
   - {fileID: 180395420}
   - {fileID: 682320609}
   - {fileID: 1493239396}
+  - {fileID: 1603747676}
