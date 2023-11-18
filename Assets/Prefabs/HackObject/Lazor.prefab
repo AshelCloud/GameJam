@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8071200211897896078}
   m_Layer: 0
   m_Name: LazorController
-  m_TagString: Untagged
+  m_TagString: HackObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,14 +306,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedLaser
       objectReference: {fileID: 0}
-    - target: {fileID: 2460520289631140445, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5952559356395223269, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6495
-      objectReference: {fileID: 0}
     - target: {fileID: 5952559356395223269, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.2348
@@ -378,10 +370,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 4198322542470663303}
     m_Modifications:
     - target: {fileID: 2176916647106544842, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6495
-      objectReference: {fileID: 0}
-    - target: {fileID: 2176916647106544842, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.2348
       objectReference: {fileID: 0}
@@ -425,10 +413,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueLaser
       objectReference: {fileID: 0}
-    - target: {fileID: 2946178911670027427, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -447,10 +431,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4198322542470663303}
     m_Modifications:
-    - target: {fileID: 3154862092149166232, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6495
-      objectReference: {fileID: 0}
     - target: {fileID: 3154862092149166232, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.2348
@@ -494,10 +474,6 @@ PrefabInstance:
     - target: {fileID: 4231130026661809338, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
       propertyPath: m_Name
       value: YellowLaser
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231130026661809338, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
