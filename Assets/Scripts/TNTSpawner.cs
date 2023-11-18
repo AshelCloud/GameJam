@@ -24,6 +24,7 @@ public class TNTSpawner : MonoBehaviour
     {
         float X = Random.Range(m_Min.position.x, m_Max.position.x);
 
-        Instantiate(m_TNTPrefab, new Vector3(X, transform.position.y), Quaternion.identity);
+        GameObject go = Instantiate(m_TNTPrefab, new Vector3(X, transform.position.y), Quaternion.identity);
+        Destroy(go.gameObject, 5f);
     }
 }

@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 public class Boss : MonoBehaviour
 {
     [SerializeField]
+    private GameObject m_WarningPrefab;
+
+    [SerializeField]
     private float m_PatrolSpeed = 3f;
 
     [SerializeField]
@@ -122,7 +125,6 @@ public class Boss : MonoBehaviour
     private IEnumerator Rush()
     {
         m_IsAttacking = true;
-        yield return new WaitForSeconds(1f);
 
         GameObject player = GameObject.Find("Player");
         Transform target = null;
@@ -136,9 +138,22 @@ public class Boss : MonoBehaviour
             target = m_Min;
         }
 
+        GameObject go = Instantiate(Resources.Load<GameObject>("Objects/Warning_Rush"), target);
+        if(target == m_Max)
+        {
+            foreach(Transform child in go.transform)
+            {
+                child.GetComponent<SpriteRenderer>().flipX = true;
+            }
+        }
+        
+        yield return new WaitForSeconds(1f);
+
+        Destroy(go.gameObject);
+
         m_Animator.SetBool("Attack2", true);
 
-        while (transform.position.x - target.position.x >= 0.1f)
+        while (Mathf.Abs(transform.position.x - target.position.x) >= 0.1f)
         {
             Vector3 pos = Vector3.MoveTowards(transform.position, target.position, m_RushSpeed);
             Vector3 origin = transform.position;
@@ -171,7 +186,18 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         m_Animator.SetBool("Attack3", true);
+        List<GameObject> warnings = new List<GameObject>();
+        foreach (var t in m_ArmPoses)
+        {
+            GameObject go = Instantiate(Resources.Load<GameObject>("Objects/Warning"), t.position + Vector3.up * 5f, Quaternion.identity);
+            warnings.Add(go);
+        }
         yield return new WaitForSeconds(1f);
+        foreach(var g in warnings)
+        {
+            Destroy(g.gameObject);
+        }
+
         foreach(var t in m_ArmPoses)
         {
             Instantiate(Resources.Load<GameObject>("Objects/Boss_Arm"), t.position, Quaternion.identity);
