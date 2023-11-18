@@ -1,42 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 enum PatrolSide
 {
+    Up,
+    Down,
     Left,
     Right
 }
 
 public class Drone : MonsterObject
 {
+    [SerializeField]
+    PatrolSystem patrolSystem;
+
     SpriteRenderer perceptionRangeRender;
     SpriteRenderer myRenderer;
 
     public bool recognizeComplete;
 
+    [SerializeField] Color recognizeColor;
+    [SerializeField] Color StopColor;
     Color originalColor;
 
-    [SerializeField]
-    Color recognizeColor;
+    [SerializeField] float recognizeDuration = 1f;
+    [SerializeField] float patrolSpeed = 2f;
+    [SerializeField] float PatrolTime = 1f;
 
-    [SerializeField]
-    Color StopColor;
-
-    [SerializeField]
-    float recognizeDuration = 1f;
-
-    [SerializeField]
-    PatrolSide side = PatrolSide.Right;
-
-    [SerializeField]
-    float patrolSpeed = 2f;
-
-    Vector3 m_MoveDir = Vector3.zero;
-
-    [SerializeField]
-    private float PatrolTime = 1f;
-
+    PatrolSide patrolSide;
+    Vector3 m_MoveDir;
     private float originalScaleX;
+
+    List<Vector3> destList = new List<Vector3>();
 
     // Start is called before the first frame update
     protected override void Start()
@@ -46,9 +42,45 @@ public class Drone : MonsterObject
         myRenderer = transform.GetComponent<SpriteRenderer>();
         originalColor = perceptionRangeRender.color;
 
+        switch(patrolSystem.direction)
+        {
+            case PatrolDirection.Horizontal:
+                patrolSide = patrolSystem.tr[0].position.x > transform.position.x ? PatrolSide.Right : PatrolSide.Left;
+                break;
+            case PatrolDirection.Vertical:
+                patrolSide = patrolSystem.tr[0].position.y > transform.position.y ? PatrolSide.Up : PatrolSide.Down;
+                break;
+        }
+
+        foreach (Transform tr in patrolSystem.tr)
+        {
+            destList.Add(transform.TransformDirection(tr.position));
+        }
+
         originalScaleX = transform.localScale.x;
 
         StartCoroutine(Patrol());
+    }
+
+    void CheckSide()
+    {
+        switch (patrolSide) 
+        {
+            case PatrolSide.Up:
+                m_MoveDir = Vector3.up;
+                break;
+            case PatrolSide.Down:
+                m_MoveDir = -Vector3.up;
+                break;
+            case PatrolSide.Right:
+                m_MoveDir = Vector3.right;
+                transform.localScale = new Vector3(originalScaleX, transform.localScale.y, transform.localScale.z);
+                break;
+            case PatrolSide.Left:
+                m_MoveDir = -Vector3.right;
+                transform.localScale = new Vector3(-originalScaleX, transform.localScale.y, transform.localScale.z);
+                break;
+        }
     }
 
     protected override void Found()
@@ -79,13 +111,12 @@ public class Drone : MonsterObject
         {
             if(targetObj.CompareTag("HoloPlayer"))
             {
-                Destroy(gameObject); //µå·Ð Æø¹ß 
+                transform.GetComponent<ExplodableObject>().ExplodeObj(); //µå·Ð Æø¹ß 
             }
             if(targetObj.CompareTag("Player"))
             {
                 targetObj.GetComponent<Player>().Die();
             }
-            //targetObj.GetComponent<PlayerComponentCtrl>().StopAllComponent();
         }
         else
         {
@@ -97,17 +128,38 @@ public class Drone : MonsterObject
 
     private IEnumerator Patrol()
     {
-        while(true)
+        int i = 0;
+        while(!perceptRange.GetPerception())
         {
-            m_MoveDir = Vector3.right;
-            transform.localScale = new Vector3(originalScaleX, transform.localScale.y, transform.localScale.z);
+            CheckSide();
 
-            yield return new WaitForSeconds(PatrolTime);
+            float distance = 0f;
+            if (patrolSystem.direction == PatrolDirection.Horizontal)
+                distance = (destList[i].x - transform.position.x) >= 0 ? destList[i].x - transform.position.x : -(destList[i].x - transform.position.x);
+            else
+                distance = (destList[i].y - transform.position.y) >= 0 ? destList[i].y - transform.position.y : -(destList[i].y - transform.position.y);
 
-            m_MoveDir = -Vector3.right;
-            transform.localScale = new Vector3(-originalScaleX, transform.localScale.y, transform.localScale.z);
+            if (distance < 0.3f)
+            {
+                i = ++i % destList.Count;
+                switch(patrolSide)
+                {
+                    case PatrolSide.Up:
+                        patrolSide = PatrolSide.Down;
+                        break;
+                    case PatrolSide.Down:
+                        patrolSide = PatrolSide.Up;
+                        break;
+                    case PatrolSide.Left:
+                        patrolSide = PatrolSide.Right;
+                        break;
+                    case PatrolSide.Right:
+                        patrolSide = PatrolSide.Left;
+                        break;
+                }
+            }
 
-            yield return new WaitForSeconds(PatrolTime);
+            yield return null;
         }
     }
 
