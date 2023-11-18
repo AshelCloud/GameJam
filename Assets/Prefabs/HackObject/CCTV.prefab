@@ -107,9 +107,9 @@ MonoBehaviour:
   zoomPanel: {fileID: 0}
   hackedColor: {r: 0.4528302, g: 0.4506942, b: 0.4506942, a: 1}
   zommOutSize: 12
-  zoomOutStayTime: 5
-  zoomOutTime: 1
-  zoomInTime: 0.5
+  zoomOutStayTime: 4.55
+  zoomOutTime: 0.7
+  zoomInTime: 0.7
 --- !u!114 &5905924066402736396
 MonoBehaviour:
   m_ObjectHideFlags: 0
