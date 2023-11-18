@@ -69,6 +69,7 @@ public class Hologram : MonoBehaviour
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
     }
+
     void ThrowObject()
     {
         float radians = throwAngle * Mathf.Deg2Rad; // 각도를 라디안으로 변환
