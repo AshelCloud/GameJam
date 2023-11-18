@@ -17,7 +17,7 @@ public class Hologram : MonoBehaviour
     private bool spawnCount = false; //한번만 설치되게 함
 
     Vector2 previousPosition; // 이전 프레임의 위치
-    float timeThreshold = 0.1f; // 움직임이 없다고 판단할 시간
+    float timeThreshold = 0.02f; // 움직임이 없다고 판단할 시간
     float timer = 0.0f; // 경과 시간
 
     void Start()
