@@ -8,7 +8,8 @@ TagManager:
   - Hologram
   - Garbage
   - HoloPlayer
-  - Enemy
+  - HackObject
+  - BombObject
   layers:
   - Default
   - TransparentFX

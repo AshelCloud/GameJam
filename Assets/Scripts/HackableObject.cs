@@ -7,9 +7,16 @@ public class HackableObject : MonoBehaviour
     [SerializeField]
     private GameObject m_HackingButtonPrefab;
 
+    private CursorManager m_CursorManager;
+
     private GameObject m_HackingButton;
 
     private bool m_IsOver = false;
+
+    private void Start()
+    {
+        m_CursorManager = Camera.main.GetComponent<CursorManager>();
+    }
 
     private void Update()
     {
@@ -49,11 +56,18 @@ public class HackableObject : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (gameObject.tag == "HackObject")
+            m_CursorManager.SetCursorManager("Cursor_Hack");
+        else if ((gameObject.tag == "BombObject"))
+            m_CursorManager.SetCursorManager("Cursor_Bomb");
+
         m_IsOver = true;
     }
 
     private void OnMouseExit()
     {
+        m_CursorManager.SetCursorManager("Cursor_Default");
+
         m_IsOver = false;
     }
 }

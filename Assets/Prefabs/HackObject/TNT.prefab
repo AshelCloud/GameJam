@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7066233045554437444}
   m_Layer: 0
   m_Name: TNT
-  m_TagString: Enemy
+  m_TagString: BombObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fa9bd8b3a9ac743b97f5b9925bcb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayer:
+  detectionLayer:
     serializedVersion: 2
     m_Bits: 0
-  explosionRadius: 5
+  radius: 5
