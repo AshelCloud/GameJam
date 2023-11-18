@@ -9,6 +9,11 @@ public class BossScene : MonoBehaviour
     [SerializeField]
     private float m_CameraSpeed = 1f;
 
+    [SerializeField]
+    private GameObject m_BossPanel = null;
+
+    private static bool hasOnce = false;
+
     private void Awake()
     {
         Instance = this;
@@ -18,13 +23,23 @@ public class BossScene : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if(hasOnce == false)
+        {
+            m_BossPanel.SetActive(true);
+
+            yield return new WaitForSeconds(3f);
+
+            Destroy(m_BossPanel.gameObject);
+            hasOnce = true;
+        }
+
         while(true)
         {
             Camera.main.orthographicSize += m_CameraSpeed * Time.deltaTime;
 
-            if(Camera.main.orthographicSize >= 16f)
+            if(Camera.main.orthographicSize >= 20f)
             {
-                Camera.main.orthographicSize = 16f;
+                Camera.main.orthographicSize = 20f;
                 break;
             }
 
