@@ -20,7 +20,7 @@ public class HologramThrow : MonoBehaviour
 
     private void Start()
     {
-        string hex = "7C7C7C";
+        string hex = "7C7C7C"; //스프라이트 회색으로 변경
         notthingColor = HexToColor(hex);
     }
     private void Update()

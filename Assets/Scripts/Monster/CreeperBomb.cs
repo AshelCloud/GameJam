@@ -65,6 +65,7 @@ public class CreeperBomb : MonsterObject
 
         //폭발 로직 여기에 들어감
         Debug.Log("폭발!");
+        Destroy(gameObject);
     }
 
     IEnumerator Blink()
