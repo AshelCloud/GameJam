@@ -8,10 +8,23 @@ public class EndingScene : MonoBehaviour
     [SerializeField]
     private Chat chat;
 
+    [SerializeField]
+    private GameObject m_BG;
+
     private IEnumerator Start()
     {
-        yield return new WaitForSeconds(3f);
+        for(int i = 0; i < 30; i  ++)
+        {
+            Color color = m_BG.GetComponent<SpriteRenderer>().color;
 
+            float amount = 5f * Time.deltaTime;
+            color.r -= amount;
+            color.g -= amount;
+            color.b -= amount;
+
+            m_BG.GetComponent<SpriteRenderer>().color = color;
+            yield return new WaitForSeconds(0.1f);
+        }
         StartCoroutine(ZoomIn());
 
         GameObject.Find("Boss").GetComponent<Animator>().SetBool("Die", true);
