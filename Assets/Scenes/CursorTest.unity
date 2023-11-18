@@ -663,6 +663,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV
       objectReference: {fileID: 0}
+    - target: {fileID: 2487328565454779066, guid: e0b9e189b88d35644927e0f2330f40d6, type: 3}
+      propertyPath: cameraShake.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117802538591566706, guid: e0b9e189b88d35644927e0f2330f40d6, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4181645812423608425, guid: e0b9e189b88d35644927e0f2330f40d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.0455117
@@ -2023,7 +2031,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4797295110146328, guid: 53153889a27ce07489dc4ead4ab7ccf7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.53
+      value: 3.05
       objectReference: {fileID: 0}
     - target: {fileID: 4797295110146328, guid: 53153889a27ce07489dc4ead4ab7ccf7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2061,12 +2069,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3464362419984856930, guid: 53153889a27ce07489dc4ead4ab7ccf7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3464362420447214973, guid: 53153889a27ce07489dc4ead4ab7ccf7, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8798554771367806510, guid: 53153889a27ce07489dc4ead4ab7ccf7, type: 3}
       propertyPath: m_Name
       value: TNT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3464362419984856930, guid: 53153889a27ce07489dc4ead4ab7ccf7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53153889a27ce07489dc4ead4ab7ccf7, type: 3}
