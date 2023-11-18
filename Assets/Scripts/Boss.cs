@@ -27,6 +27,9 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private Transform m_ExplosionPoint_R;
 
+    [SerializeField]
+    private List<Transform> m_ArmPoses = new List<Transform>();
+
     private Animator m_Animator;
 
     private bool m_IsAttacking = false;
@@ -78,6 +81,11 @@ public class Boss : MonoBehaviour
             yield return new WaitForSeconds(3f);
 
             StartCoroutine(Rush());
+            yield return new WaitUntil(() => m_IsAttacking == false);
+
+            yield return new WaitForSeconds(3f);
+
+            StartCoroutine(Attack03());
             yield return new WaitUntil(() => m_IsAttacking == false);
 
             yield return new WaitForSeconds(3f);
@@ -155,5 +163,22 @@ public class Boss : MonoBehaviour
             CreeperSpawner.Instance.Spawn();
             yield return new WaitForSeconds(0.3f);
         }
+    }
+
+    private IEnumerator Attack03()
+    {
+        m_IsAttacking = true;
+        yield return new WaitForSeconds(1f);
+
+        m_Animator.SetBool("Attack3", true);
+        yield return new WaitForSeconds(1f);
+        foreach(var t in m_ArmPoses)
+        {
+            Instantiate(Resources.Load<GameObject>("Objects/Boss_Arm"), t.position, Quaternion.identity);
+            yield return null;
+        }
+
+        m_Animator.SetBool("Attack3", false);
+        m_IsAttacking = false;
     }
 }
