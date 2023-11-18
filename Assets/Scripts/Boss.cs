@@ -238,8 +238,6 @@ public class Boss : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        Debug.Log("Damaged");
-
         StartCoroutine(RedBlink());
     }
 

@@ -236,6 +236,7 @@ MonoBehaviour:
   blinkTime: 0.3
   blinkCount: 3
   patrolSpeed: 2
+  explosionRadius: 5
 --- !u!114 &8729921347087113804
 MonoBehaviour:
   m_ObjectHideFlags: 0

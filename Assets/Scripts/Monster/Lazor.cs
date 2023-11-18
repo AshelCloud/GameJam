@@ -54,8 +54,7 @@ public class Lazor : MonsterObject
 
         if (time >= recognizeDuration)
         {
-            //»ç¸ÁÃ³¸® ·ÎÁ÷ ³Ö´Â °÷
-            Debug.Log("Á×¾ú¶ì");
+            GameObject.Find("Player").GetComponent<Player>().Die();
             StopAllCoroutines();
         }
         else

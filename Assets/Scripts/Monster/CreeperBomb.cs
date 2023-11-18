@@ -21,6 +21,9 @@ public class CreeperBomb : MonsterObject
     [SerializeField]
     float patrolSpeed = 2f;
 
+    [SerializeField]
+    private float explosionRadius = 1f;
+
     List<Vector3> destList = new List<Vector3>();
 
     // Start is called before the first frame update
@@ -66,7 +69,38 @@ public class CreeperBomb : MonsterObject
         Vector3 instantiatePos = transform.position;
         instantiatePos.y -= myRenderer.size.y / 2;
         Instantiate(transform.GetComponent<ExplodableObject>().GetParticle(), instantiatePos, Quaternion.identity);
+        FindPlayer();
         Destroy(gameObject);
+    }
+
+    private void FindPlayer()
+    {
+        // TNT 주변에 있는 오브젝트를 찾음
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+        foreach (Collider2D col in colliders)
+        {
+            // Enemy 태그를 가진 오브젝트인지 확인
+            if (col.CompareTag("Enemy") || col.CompareTag("HackObject") || col.CompareTag("BombObject"))
+            {
+                //이펙트 추가필요
+                if (col.gameObject.GetComponent<ExplodableObject>())
+                {
+                    col.gameObject.GetComponent<ExplodableObject>().ExplodeObj();
+                }
+                transform.GetComponent<ExplodableObject>().ExplodeObj();
+            }
+
+            if (col.CompareTag("Boss"))
+            {
+                col.GetComponent<Boss>().GetDamage(50f);
+            }
+
+            if(col.GetComponent<Player>())
+            {
+                col.GetComponent<Player>().Die();
+            }
+        }
     }
 
     IEnumerator Blink()

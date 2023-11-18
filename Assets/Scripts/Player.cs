@@ -160,11 +160,6 @@ public class Player : MonoBehaviour
             move.y = -m_ClimingSpeed;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            m_Rigidbody.AddForce(Vector2.right * m_JumpPower, ForceMode2D.Impulse);
-        }
-
         m_Animator.SetBool("SideWalk", move != Vector2.zero);
 
         m_Rigidbody.velocity = move;
