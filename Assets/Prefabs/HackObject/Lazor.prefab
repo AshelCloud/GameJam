@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 4198322542470663303}
   m_Layer: 0
   m_Name: Lazor
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,9 +244,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3467984267177042453, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850133768744213278, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6509787603882558566, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
       propertyPath: m_Name
       value: Hacking Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509787603882558566, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6509787603882558566, guid: 5fea5340d688e92409fc035e4810964e, type: 3}
       propertyPath: m_IsActive
@@ -302,9 +314,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4198322542470663303}
     m_Modifications:
+    - target: {fileID: 1937686772837013466, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2460520289631140445, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
       propertyPath: m_Name
       value: RedLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460520289631140445, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2460520289631140445, guid: 2d69dcdb12b0df44687621b4d89b9208, type: 3}
       propertyPath: m_IsActive
@@ -377,6 +397,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4198322542470663303}
     m_Modifications:
+    - target: {fileID: 1826947764462550806, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2176916647106544842, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6495
@@ -426,6 +450,10 @@ PrefabInstance:
       value: BlueLaser
       objectReference: {fileID: 0}
     - target: {fileID: 2946178911670027427, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946178911670027427, guid: bd4e683e1b9fef74890d4e787f393043, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -447,6 +475,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4198322542470663303}
     m_Modifications:
+    - target: {fileID: 1325004161603401444, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3154862092149166232, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6495
@@ -494,6 +526,10 @@ PrefabInstance:
     - target: {fileID: 4231130026661809338, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
       propertyPath: m_Name
       value: YellowLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231130026661809338, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4231130026661809338, guid: 5e42327e6819eaa4a8a16da215e917d2, type: 3}
       propertyPath: m_IsActive
