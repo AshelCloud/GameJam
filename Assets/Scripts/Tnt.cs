@@ -10,15 +10,23 @@ public class Tnt : MonoBehaviour
 
     public float explosionRadius = 5f; // 폭발 반경 설정
 
-    private void Start()
-    {
-        m_CursorManager = Camera.main.GetComponent<CursorManager>();
-    }
-
     void Update()
     {
         // 마우스 오른쪽 버튼을 눌렀을 때
         if (Input.GetMouseButtonDown(1))
+        {
+            CheckClick();
+        }
+    }
+
+    void CheckClick()
+    {
+        // 마우스 위치에서 Ray를 쏴서 충돌한 오브젝트 확인
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+
+        // TNT를 클릭했을 때
+        if (hit.collider != null && hit.collider.gameObject == gameObject)
         {
             Explode();
         }
