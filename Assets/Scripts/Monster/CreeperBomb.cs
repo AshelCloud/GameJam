@@ -63,8 +63,10 @@ public class CreeperBomb : MonsterObject
             count++;
         }
 
-        //폭발 로직 여기에 들어감
-        Debug.Log("폭발!");
+        Vector3 instantiatePos = transform.position;
+        instantiatePos.y -= myRenderer.size.y / 2;
+        Instantiate(transform.GetComponent<ExplodableObject>().GetParticle(), instantiatePos, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     IEnumerator Blink()
