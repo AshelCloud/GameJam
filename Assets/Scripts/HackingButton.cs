@@ -8,10 +8,17 @@ public class HackingButton : MonoBehaviour
     [SerializeField]
     private Image m_FillObject;
 
+    [SerializeField]
+    private AudioClip hackingClip;
+
+    [SerializeField]
+    private AudioClip completeClip;
+
     public bool m_IsDone { get; private set; } = false;
 
     private void Start()
     {
+        SoundManager.Instance.PlayEffectClip(hackingClip);
         m_FillObject.fillAmount = 0f;
     }
 
@@ -21,6 +28,8 @@ public class HackingButton : MonoBehaviour
 
         if(m_FillObject.fillAmount >= 1f)
         {
+            SoundManager.Instance.StopEffectClip();
+            SoundManager.Instance.PlayEffectOneShot(completeClip);
             m_IsDone = true;
         }
     }

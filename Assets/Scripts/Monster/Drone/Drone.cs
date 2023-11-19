@@ -27,6 +27,9 @@ public class Drone : MonsterObject
     [SerializeField] float recognizeDuration = 1f;
     [SerializeField] float patrolSpeed = 2f;
 
+    [SerializeField]
+    private AudioClip detectClip;
+
     PatrolSide patrolSide;
     Vector3 m_MoveDir;
     private float originalScaleX;
@@ -120,6 +123,7 @@ public class Drone : MonsterObject
             }
             if(targetObj.CompareTag("Player"))
             {
+                SoundManager.Instance.PlayEffectOneShot(detectClip);
                 targetObj.GetComponent<Player>().Die();
             }
         }

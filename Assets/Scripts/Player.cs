@@ -36,6 +36,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask m_GrondLayerMask;
 
+    [SerializeField]
+    private AudioClip landingClip;
+
+    [SerializeField]
+    private AudioClip jumpClip;
+
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
@@ -135,6 +141,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            SoundManager.Instance.PlayEffectOneShot(jumpClip);
             m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, m_JumpPower);
         }
     }
@@ -185,9 +192,21 @@ public class Player : MonoBehaviour
         return ret;
     }
 
+    private bool m_LastGrounded = false;
+
     private bool IsGrounded()
     {
         bool ret = Physics2D.Raycast(transform.position, -Vector3.up, m_DistToGround, m_GrondLayerMask);
+
+        if(m_LastGrounded == false)
+        {
+            if(ret)
+            {
+                SoundManager.Instance.PlayEffectOneShot(landingClip);
+            }
+        }
+
+        m_LastGrounded = ret;
 
         return ret;
     }

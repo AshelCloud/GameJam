@@ -252,6 +252,7 @@ MonoBehaviour:
   blinkCount: 3
   patrolSpeed: 2
   explosionRadius: 5
+  detectClip: {fileID: 8300000, guid: 3a02a0a0f5ebb3a49bb7b2d145573e92, type: 3}
 --- !u!114 &8729921347087113804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObj: {fileID: 8987903795644150946, guid: 2847b09264b4d5c4da224f10f79438d4, type: 3}
-  effectClip: {fileID: 8300000, guid: 81dd65e4dfd334f42befc4ca59ca9e24, type: 3}
+  effectClip: {fileID: 8300000, guid: 29d1adc014c7c394d8dd51e753f0169c, type: 3}
 --- !u!1 &3555167317015495245
 GameObject:
   m_ObjectHideFlags: 0

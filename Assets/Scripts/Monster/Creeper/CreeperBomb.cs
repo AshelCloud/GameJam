@@ -17,6 +17,9 @@ public class CreeperBomb : MonsterObject
 
     [SerializeField] private float explosionRadius = 1f;
 
+    [SerializeField]
+    private AudioClip detectClip;
+
     PatrolSide patrolSide;
     Vector3 m_MoveDir;
 
@@ -96,6 +99,8 @@ public class CreeperBomb : MonsterObject
     IEnumerator Explode()
     {
         int count = 0;
+
+        SoundManager.Instance.PlayEffectClip(detectClip);
         while (count < blinkCount)
         {
             StartCoroutine(Blink());
