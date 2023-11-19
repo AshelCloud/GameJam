@@ -44,18 +44,16 @@ public class TutorialScene : MonoBehaviour
 
         playerScript.playScript = false;
         hologram.enabled = false;
+
         text = "³» ¸öÀÌ ¿Ö ÀÌ·¸°Ô µÆÁö?";
         chat.OpenWithWait(text, (finished) => 
         {
             if (finished)
             {
-                playerScript.playScript = true;
-                hologram.enabled = true;
             }
         });
         yield return new WaitForSeconds(text.Length * 0.03f + 2f);
 
-        playerScript.playScript = false;
         text = "Èò ÅÐÀÌ ¿Ö ÀÌ·¸°Ô ¸¹¾Æ";
         chat.OpenWithWait(text, (finished) => 
         {

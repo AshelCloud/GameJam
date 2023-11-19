@@ -8,12 +8,14 @@ public class TutorialHackingChat : MonoBehaviour
     private Chat chat;
 
     Player playerScript;
+    private HologramThrow hologram;
 
     private static bool hasOnce = false;
 
     private void Start()
     {
         playerScript = GameObject.Find("Player").GetComponent<Player>();
+        hologram = GameObject.Find("Player").GetComponent<HologramThrow>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,13 +36,21 @@ public class TutorialHackingChat : MonoBehaviour
 
         DisablePlayerScript();
         text = "성가신 드론이네 지금 능력이면 이 버튼을 해킹할 수 있겠는데?";
-        chat.OpenWithWait(text, (finished) => { if (finished) playerScript.playScript = true; });
+        chat.OpenWithWait(text, (finished) =>
+        {
+            if (finished)
+            {
+                playerScript.playScript = true;
+                hologram.enabled = true;
+            }
+        });
         yield return new WaitForSeconds(text.Length * 0.03f + 2f);
     }
 
     private void DisablePlayerScript()
     {
         playerScript.playScript = false;
+        hologram.enabled = false;
         playerScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }

@@ -21,9 +21,10 @@ public class GameScene : MonoBehaviour
     {
         if(hasOnce == false)
         {
-            yield return new WaitForSeconds(7f);
             playerScript.playScript = false;
             hologram.enabled = false;
+
+            yield return new WaitForSeconds(7f);
             chat.OpenWithWait("내 해킹 실력을 보여주마", (finished) => 
             {
                 if (finished)
