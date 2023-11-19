@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28d239f18fd5094294ab7ac12b7655e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playScript: 1
   m_Speed: 5
   m_JumpPower: 5
   m_ClimingSpeed: 5
@@ -162,6 +163,11 @@ MonoBehaviour:
   m_GrondLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_PlatformLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  landingClip: {fileID: 0}
+  jumpClip: {fileID: 0}
   m_IsDie: 0
 --- !u!50 &3913982386476518968
 Rigidbody2D:
@@ -252,3 +258,4 @@ MonoBehaviour:
   holoImage: []
   maxusedHg: 3
   notthingColor: {r: 0, g: 0, b: 0, a: 0}
+  playScript: 1
