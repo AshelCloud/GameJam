@@ -9,27 +9,28 @@ public class CCTV : HackableObject
 
     public GameObject zoomPanel;
 
-    [SerializeField]
-    Color hackedColor;
-
     [SerializeField] float zommOutSize = 12f;
     [SerializeField] float zoomOutStayTime = 5f;
     [SerializeField] float zoomOutTime = 1f;
     [SerializeField] float zoomInTime = 0.5f;
 
     private float originalSize;
+    public bool isHacked;
+
+    private void Awake()
+    {
+        isHacked = false;
+    }
 
     protected override void Hacking()
     {
         base.Hacking();
 
         originalSize = Camera.main.orthographicSize;
-        transform.GetComponent<SpriteRenderer>().color = hackedColor;
 
         StartCoroutine(ZoomCamera());
 
-        transform.GetComponent<CCTVFindLogic>().enabled = false;
-        this.enabled= false;
+        isHacked = true;
     }
 
     IEnumerator ZoomCamera()

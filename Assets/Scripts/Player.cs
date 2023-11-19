@@ -8,6 +8,8 @@ using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
+    public bool playScript = true;
+
     private Rigidbody2D m_Rigidbody;
     private BoxCollider2D m_BoxCollider;
     private Animator m_Animator;
@@ -55,7 +57,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(SceneManager.GetActiveScene().name == "Game_Boss")
+        if (!playScript)
+            return;
+
+        if (SceneManager.GetActiveScene().name == "Game_Boss")
         {
             if(BossScene.Instance.IsStart)
             {
@@ -70,6 +75,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (!playScript)
+            return;
+
         if (SceneManager.GetActiveScene().name == "Game_Boss")
         {
             if (BossScene.Instance.IsStart)

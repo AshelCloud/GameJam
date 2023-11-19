@@ -18,7 +18,7 @@ public class LazorController : HackableObject
 
     protected override void Hacking()
     {
-        base.Hacking();
+        isOperate = false;
 
         if(SceneManager.GetActiveScene().name == "Game_Boss")
         {
@@ -34,7 +34,6 @@ public class LazorController : HackableObject
     {
         transform.GetComponent<SpriteRenderer>().sprite = sprites[1];
         controlledLazor.SetActive(false);
-        this.enabled = false;
     }
 
     private IEnumerator RunHack()
