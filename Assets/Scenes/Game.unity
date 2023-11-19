@@ -5697,6 +5697,14 @@ PrefabInstance:
       value: 8.99
       objectReference: {fileID: 0}
     - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bd22482043a93c24f93b57f9f978191e, type: 3}
+    - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: landingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 21fd70f2d76da384eac4a0856abbe9e1, type: 3}
+    - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_DownSpeed
       value: 0.07
       objectReference: {fileID: 0}
@@ -5707,6 +5715,10 @@ PrefabInstance:
     - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_ClimingSpeed
       value: 11.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: m_PlatformLayerMask.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 4515804762503203056, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_Layer

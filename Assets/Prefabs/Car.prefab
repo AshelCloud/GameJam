@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_MoveSpeed: 0.79
+  clip: {fileID: 8300000, guid: d2e5655f2ba04f148b7a54cce71a9a97, type: 3}
 --- !u!61 &6699513616176014511
 BoxCollider2D:
   m_ObjectHideFlags: 0

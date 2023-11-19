@@ -8,6 +8,9 @@ public class Portal : MonoBehaviour
     [SerializeField]
     private string m_SceneName = "";
 
+    [SerializeField]
+    private AudioClip clip;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.GetComponent<Player>())
@@ -21,6 +24,8 @@ public class Portal : MonoBehaviour
         Vector3 pos = Camera.main.transform.position;
         pos.z = 0f;
         Instantiate(Resources.Load<GameObject>("Objects/FadeOut_Order"), pos, Quaternion.identity);
+
+        SoundManager.Instance.PlayEffectOneShot(clip);
 
         yield return new WaitForSeconds(2f);
 

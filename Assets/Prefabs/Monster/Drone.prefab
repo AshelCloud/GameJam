@@ -335,6 +335,7 @@ MonoBehaviour:
   StopColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   recognizeDuration: 0.3
   patrolSpeed: 4
+  detectClip: {fileID: 8300000, guid: d18ec6c2ecc6fb540a98350e2a41bcbe, type: 3}
 --- !u!114 &2022569675805963048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObj: {fileID: 6454226686028506981, guid: 12141fbac30eed64db3d34abb3fa31a9, type: 3}
+  effectClip: {fileID: 8300000, guid: 29d1adc014c7c394d8dd51e753f0169c, type: 3}
 --- !u!61 &4768650099423304514
 BoxCollider2D:
   m_ObjectHideFlags: 0

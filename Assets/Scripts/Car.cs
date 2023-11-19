@@ -17,6 +17,9 @@ public class Car : MonoBehaviour
     private bool m_CarryPlayer = false;
     private bool m_Done = false;
 
+    [SerializeField]
+    private AudioClip clip;
+
     private void Update()
     {
         if(m_CarryPlayer)
@@ -35,6 +38,7 @@ public class Car : MonoBehaviour
 
         m_CarryPlayer = true;
         m_IsRun = true;
+        SoundManager.Instance.PlayEffectOneShot(clip);
         StartCoroutine(StartRun());
     }
 

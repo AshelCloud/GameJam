@@ -165,3 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FillObject: {fileID: 6435791865810435468}
+  hackingClip: {fileID: 8300000, guid: 2b8dd73cfb6b6694b956a9290ab64cb4, type: 3}
+  completeClip: {fileID: 8300000, guid: 12ed16673958aa54c8fd16a26c46afb0, type: 3}

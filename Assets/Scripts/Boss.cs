@@ -42,6 +42,9 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private BoxCollider2D m_RightHand;
 
+    [SerializeField]
+    private AudioClip pattern2;
+
     private Animator m_Animator;
 
     private bool m_IsAttacking = false;
@@ -179,6 +182,7 @@ public class Boss : MonoBehaviour
             yield return null;
         }
 
+        SoundManager.Instance.PlayEffectOneShot(pattern2);
         Camera.main.GetComponent<CameraShake>().Run(0.5f, 0.5f);
         m_Animator.SetBool("Attack2", false);
         m_IsAttacking = false;

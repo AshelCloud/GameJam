@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4492626261808026417}
   - component: {fileID: 8209560922706274047}
   - component: {fileID: 1954471797757380522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonsterLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8476512518444613495}
   - component: {fileID: 2241479719364153554}
   - component: {fileID: 6694598081815542365}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,9 +204,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2776002390251985151}
   - component: {fileID: 163216323814143486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

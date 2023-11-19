@@ -143643,6 +143643,18 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bd22482043a93c24f93b57f9f978191e, type: 3}
+    - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: climbClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 82b2e715cbf621e4dad7b4028fbc05da, type: 3}
+    - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: landingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 21fd70f2d76da384eac4a0856abbe9e1, type: 3}
+    - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_DownSpeed
       value: 0.1
       objectReference: {fileID: 0}
@@ -144307,7 +144319,7 @@ MonoBehaviour:
   m_PatrolTime: 1
   m_Min: {fileID: 1062251848}
   m_Max: {fileID: 861347161}
-  m_RushSpeed: 0.4
+  m_RushSpeed: 1
   m_ExplosionPoint_L: {fileID: 2062321304}
   m_ExplosionPoint_R: {fileID: 509141702}
   m_ArmPoses:
@@ -144319,6 +144331,7 @@ MonoBehaviour:
   m_Center: {fileID: 2109264702}
   m_LeftHand: {fileID: 2062321305}
   m_RightHand: {fileID: 509141703}
+  pattern2: {fileID: 8300000, guid: 53586bf7695db494683a3dd319cb237a, type: 3}
   m_IsRushing: 0
 --- !u!1 &1606883964
 GameObject:
