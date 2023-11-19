@@ -51,7 +51,6 @@ public class CreeperBomb : MonsterObject
             {
                 firstRandX = SetRandomPatrolPoint();
                 secondRandX = SetRandomPatrolPoint();
-                Debug.Log(Mathf.Abs(firstRandX - secondRandX));
             }
             points[0] = new Vector3(firstRandX, transform.position.y, 0f);
             points[1] = new Vector3(secondRandX, transform.position.y, 0f);
@@ -65,11 +64,6 @@ public class CreeperBomb : MonsterObject
         foreach (Vector3 pos in points)
         {
             destList.Add(transform.TransformDirection(pos));
-        }
-
-        for(int i = 0; i < 2; i++)
-        {
-            Debug.Log(destList[i].x);
         }
 
         patrolSide = destList[0].x > transform.position.x ? PatrolSide.Right : PatrolSide.Left;

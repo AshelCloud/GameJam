@@ -16,6 +16,7 @@ public class GarbageHide : MonoBehaviour
         {
             Debug.LogError("Player reference not assigned!");
         }
+            player = FindObjectOfType<Player>();
     }
 
     void OnTriggerEnter2D(Collider2D Collider)

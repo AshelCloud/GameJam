@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    private void Awake()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void Initialize()
     {
-        Instance = this;
-
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = new GameObject("GameManager").AddComponent<GameManager>();
+            DontDestroyOnLoad(Instance.gameObject);
+        }
     }
 
     private void Start()

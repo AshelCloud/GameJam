@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class Chat : MonoBehaviour
@@ -32,7 +34,7 @@ public class Chat : MonoBehaviour
 
             txt_Chat.text = m_CurrentText;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -42,5 +44,33 @@ public class Chat : MonoBehaviour
             gameObject.SetActive(false);
             txt_Chat.text = "";
         }
+    }
+
+    public IEnumerator TextOpenAndWait(string text, Action<bool> callback, bool endIsClose = true)
+    {
+        txt_Chat.text = "";
+
+        m_EndIsClose = endIsClose;
+        m_OriginText = text;
+        m_CurrentText = "";
+
+        foreach (var ch in m_OriginText)
+        {
+            m_CurrentText += ch;
+
+            txt_Chat.text = m_CurrentText;
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        if (m_EndIsClose)
+        {
+            gameObject.SetActive(false);
+            txt_Chat.text = "";
+        }
+
+        callback(true);
     }
 }

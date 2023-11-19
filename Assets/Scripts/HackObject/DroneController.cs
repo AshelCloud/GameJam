@@ -10,18 +10,13 @@ public class DroneController : HackableObject
     [SerializeField]
     List<GameObject> m_ControlledDrones;
 
-    [SerializeField] Color hackedColor;
-
     protected override void Hacking()
     {
         base.Hacking();
 
         transform.GetComponent<SpriteRenderer>().sprite = sprites[1];
-        transform.GetComponent<SpriteRenderer>().color = hackedColor;
 
         StopControlledDrones();
-
-        this.enabled = false;
     }
 
     void StopControlledDrones()

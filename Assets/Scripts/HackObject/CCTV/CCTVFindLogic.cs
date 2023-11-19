@@ -14,8 +14,6 @@ public class CCTVFindLogic : MonoBehaviour
     [SerializeField]
     private float findRange = 5f;
 
-    private bool isPlayerIn = false;
-
     private void Start()
     {
         StartCoroutine(Operate());
@@ -23,15 +21,18 @@ public class CCTVFindLogic : MonoBehaviour
 
     IEnumerator Operate()
     {
-        while (true)
+        while (!cctv.isHacked)
         {
             if (FindPlayer())
-                cctv.enabled = true;
+            {
+                cctv.Operate();
+            }
             else
-                cctv.enabled = false;
+            {
+                cctv.Deoperate();
+            }
 
             yield return null;
-
         }
     }
 
@@ -49,10 +50,5 @@ public class CCTVFindLogic : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, findRange);
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
     }
 }
