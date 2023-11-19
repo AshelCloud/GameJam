@@ -5,18 +5,24 @@ using UnityEngine;
 public class Lever : MonoBehaviour
 {
 
+    private Animator m_Animator;
+
     private bool isPlayerInRange = false;
+
+    [SerializeField]
     private WindZone windZoneInstance;
 
-    private void Start()
+    private void Awake()
     {
-        windZoneInstance = FindObjectOfType<WindZone>();
+        m_Animator = GetComponent<Animator>();
     }
+
     private void Update()
     {
-        if (isPlayerInRange && Input.GetMouseButtonDown(1)) 
+        if (isPlayerInRange && Input.GetMouseButtonDown(1))  //¿ìÅ¬¸¯
         {
-            windZoneInstance.windon = false;
+            windZoneInstance.Disable();
+            m_Animator.SetBool("Activate", true);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

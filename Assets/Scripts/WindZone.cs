@@ -12,6 +12,13 @@ public class WindZone : MonoBehaviour
     [SerializeField]
     private Vector2 fanDirection = Vector2.right; // 선풍기가 가리키는 방향
 
+    private Animator m_Animator;
+
+    private void Awake()
+    {
+        m_Animator = GetComponent<Animator>();
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player") && windon)
@@ -25,6 +32,12 @@ public class WindZone : MonoBehaviour
                 other.GetComponent<Rigidbody2D>().AddForce(fanDirection * fanForce);
             }
         }
+    }
+
+    public void Disable()
+    {
+        windon = false;
+        m_Animator.SetBool("NoWind", true);
     }
 
     private void OnDrawGizmosSelected()
