@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: feebc1b11570dca4ab9bc37652082f32, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: feebc1b11570dca4ab9bc37652082f32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -158,6 +162,7 @@ MonoBehaviour:
   m_GrondLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_IsDie: 0
 --- !u!50 &3913982386476518968
 Rigidbody2D:
   serializedVersion: 4
@@ -244,3 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenadePrefab: {fileID: 6779503966129906495, guid: d94fef79407e8e84e930d7a1217fe2b3, type: 3}
   throwtf: {fileID: 690857547068887097}
+  holoImage: []
+  maxusedHg: 3
+  notthingColor: {r: 0, g: 0, b: 0, a: 0}

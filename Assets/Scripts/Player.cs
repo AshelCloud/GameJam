@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
 
     }
 
-    private bool m_IsDie = false;
+    public bool m_IsDie = false;
 
     public void Die()
     {
