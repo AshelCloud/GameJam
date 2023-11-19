@@ -13,13 +13,13 @@ public class Player : MonoBehaviour
     private Animator m_Animator;
 
     [SerializeField]
-    private float m_Speed = 5.0f;
+    private float m_Speed = 8.0f;
 
     [SerializeField]
-    private float m_JumpPower = 5.0f;
+    private float m_JumpPower = 13.0f;
 
     [SerializeField]
-    private float m_ClimingSpeed = 5.0f;
+    private float m_ClimingSpeed = 6.0f;
 
     [SerializeField]
     private float m_DistToGround = 0.1f;
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public bool m_IsRight = false;
 
     [SerializeField]
-    private float m_DownSpeed = 1f;
+    private float m_DownSpeed = 0.5f;
 
     [SerializeField]
     private LayerMask m_GrondLayerMask;
@@ -45,12 +45,6 @@ public class Player : MonoBehaviour
     {
         m_DistToWall = m_BoxCollider.bounds.extents.x;
 
-        m_Speed = 9f;
-        m_JumpPower = 14.5f;
-        m_ClimingSpeed = 11.5f;
-        m_DistToGround = 0.1f;
-
-        m_DownSpeed = 0.07f;
     }
 
     private void FixedUpdate()
