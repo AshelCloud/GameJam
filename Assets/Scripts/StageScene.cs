@@ -5,24 +5,20 @@ using UnityEngine;
 public class StageScene : MonoBehaviour
 {
     public static StageScene Instance;
-    [SerializeField]
-    private float cameraSpeed = 2.0f;
-    [SerializeField]
-    private float moveSpeed = 2.0f;
-    [SerializeField]
-    public Transform player;
-
-    [SerializeField]
-    private Vector3 targetPosition;
-
-    private bool fadein = false;
     public bool stageStart = false;
 
+    [SerializeField] private float zoomOutTime = 2.0f;
+    [SerializeField] private float zoomOutStayTime = 3.0f;
+    [SerializeField] private float zoomInTime = 0.5f;
+    [SerializeField] private float zoomOutSize = 25f;
+    [SerializeField] private Vector3 zoomOutPos;
+
+    private Vector3 startPos;
     private static bool hasOnce = false;
 
     private void Awake()
     {
-        Instance= this;
+        Instance = this;
     }
 
     private IEnumerator Start()
@@ -30,59 +26,40 @@ public class StageScene : MonoBehaviour
         if (hasOnce == false)
         {
             Camera.main.GetComponent<FollowCamera>().enabled = false;
-            while (Camera.main.orthographicSize < 29f)
+            float startSize = Camera.main.orthographicSize;
+            startPos = GameObject.Find("Player").transform.position;
+            startPos.z = Camera.main.transform.position.z;
+            Camera.main.transform.position = startPos;
+            zoomOutPos.z = Camera.main.transform.position.z;
+
+            float time = 0f;
+            while (time < zoomOutTime)
             {
-                Camera.main.orthographicSize += 2f * cameraSpeed * Time.deltaTime;
+                Camera.main.orthographicSize = Mathf.Lerp(startSize, zoomOutSize, time / zoomOutTime);
+                Camera.main.transform.position = Vector3.Lerp(startPos, zoomOutPos, time / zoomOutTime);
+
+                time += Time.deltaTime;
 
                 yield return null;
             }
+            Camera.main.orthographicSize = zoomOutSize;
+            Camera.main.transform.position = zoomOutPos;
 
+            yield return new WaitForSeconds(zoomOutStayTime);
+
+            time = 0f;
             Camera.main.GetComponent<FollowCamera>().enabled = true;
-            while (true)
+            while (time < zoomInTime)
             {
-                Camera.main.orthographicSize -= 8f * cameraSpeed * Time.deltaTime;
-                if (Camera.main.orthographicSize <= 7f)
-                {
-                    Camera.main.orthographicSize = 7f;
-                    this.transform.position = targetPosition;
-                    fadein = true;
+                Camera.main.orthographicSize = Mathf.Lerp(zoomOutSize, startSize, time / zoomInTime);
 
-                    hasOnce = true;
-                    break;
-                }
+                time += Time.deltaTime;
 
                 yield return null;
             }
-        }
-    }
+            Camera.main.orthographicSize = startSize;
 
-    private void Update()
-    {
-        if(fadein == true)
-        {
-            if (player != null)
-            {
-                Vector3 directionToPlayer = player.position - transform.position;
-                float distanceToPlayer = directionToPlayer.magnitude;
-
-                if (distanceToPlayer > 0.1f)
-                {
-                    // 플레이어 쪽으로 일정 속도로 이동
-                    Vector3 moveVector = directionToPlayer.normalized * moveSpeed * Time.deltaTime;
-
-                    // 이동할 거리가 남은 거리보다 크다면 플레이어 위치로 이동
-                    if (moveVector.magnitude > distanceToPlayer)
-                    {
-
-                        transform.position = player.position;
-                    }
-                    else
-                    {
-                        transform.position += moveVector;
-                        stageStart = true;
-                    }
-                }
-            }
+            hasOnce = true;
         }
     }
 }

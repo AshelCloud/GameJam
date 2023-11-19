@@ -504,11 +504,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5007fea66ae5ad241aa2ae227f7bba41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 2
-  moveSpeed: 2
-  player: {fileID: 1954839967}
-  targetPosition: {x: 0, y: 0, z: 0}
   stageStart: 0
+  zoomOutTime: 2
+  zoomOutStayTime: 3
+  zoomInTime: 0.5
+  zoomOutSize: 25
+  zoomOutPos: {x: 29.5, y: 0, z: 0}
 --- !u!1001 &153392977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2468,7 +2469,7 @@ Transform:
   m_GameObject: {fileID: 841530927}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -849.3227, y: 436, z: -9720}
+  m_LocalPosition: {x: -849.3227, y: 436, z: 0}
   m_LocalScale: {x: 108, y: 108, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4797,11 +4798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.9
+      value: -8.88
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.29
+      value: -12.27
       objectReference: {fileID: 0}
     - target: {fileID: 2505584972893489407, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_LocalPosition.z
