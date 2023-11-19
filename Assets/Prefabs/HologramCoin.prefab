@@ -13,8 +13,20 @@ PrefabInstance:
       value: HologramCoin
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: bef2a4e6708de3b4eb9ae49804925ce6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: bef2a4e6708de3b4eb9ae49804925ce6, type: 3}
       propertyPath: m_TagString
       value: HoloPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: -8521589919370517864, guid: bef2a4e6708de3b4eb9ae49804925ce6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -7753469140646156459, guid: bef2a4e6708de3b4eb9ae49804925ce6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: bef2a4e6708de3b4eb9ae49804925ce6, type: 3}
       propertyPath: m_LocalScale.x
@@ -63,6 +75,10 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: bef2a4e6708de3b4eb9ae49804925ce6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2333358159679091677, guid: bef2a4e6708de3b4eb9ae49804925ce6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

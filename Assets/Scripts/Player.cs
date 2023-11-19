@@ -221,6 +221,9 @@ public class Player : MonoBehaviour
         }
 
         GameObject go = Instantiate(Resources.Load<GameObject>("Objects/FadeOut"));
+        Vector3 pos = Camera.main.transform.position;
+        pos.z = go.transform.position.z;
+        go.transform.position = pos;
         m_Animator.SetBool("Die", true);
 
         StartCoroutine(CameraZoomIn());

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,8 +41,11 @@ public class HologramThrow : MonoBehaviour
 
     private void ChangeSprite()
     {
-        Image imageComponent = holoImage[3 - currentusedHG].GetComponent<Image>();
-        imageComponent.color = notthingColor;
+        if(holoImage.Length > 0)
+        {
+            Image imageComponent = holoImage[3 - currentusedHG].GetComponent<Image>();
+            imageComponent.color = notthingColor;
+        }
     }
     Color HexToColor(string hex)
     {

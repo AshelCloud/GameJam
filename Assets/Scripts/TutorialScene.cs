@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class TutorialScene : MonoBehaviour
@@ -11,6 +13,10 @@ public class TutorialScene : MonoBehaviour
 
     public bool m_IsStart = false;
 
+    private static bool hasOnce = false;
+
+    Player playerScript;
+
     private void Awake()
     {
         Instance = this;
@@ -18,18 +24,31 @@ public class TutorialScene : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(StartChat());
+        if(hasOnce == false)
+        {
+            hasOnce = true;
+
+            playerScript = GameObject.Find("Player").GetComponent<Player>();
+
+            StartCoroutine(StartChat());
+        }
     }
 
     private IEnumerator StartChat()
     {
+        string text = "";
+
         m_IsStart = false;
 
-        chat.Open("³» ¸öÀÌ ¿Ö ÀÌ·¸°Ô µÆÁö?");
+        playerScript.playScript = false;
+        text = "³» ¸öÀÌ ¿Ö ÀÌ·¸°Ô µÆÁö?";
+        chat.OpenWithWait(text, (finished) => { if (finished) playerScript.playScript = true; });
+        yield return new WaitForSeconds(text.Length * 0.03f + 2f);
 
-        yield return new WaitForSeconds(3f);
-
-        chat.Open("Èò ÅÐÀÌ ¿Ö ÀÌ·¸°Ô ¸¹¾Æ");
+        playerScript.playScript = false;
+        text = "Èò ÅÐÀÌ ¿Ö ÀÌ·¸°Ô ¸¹¾Æ";
+        chat.OpenWithWait(text, (finished) => { if (finished) playerScript.playScript = true; });
+        yield return new WaitForSeconds(text.Length * 0.03f + 2f);
 
         yield return new WaitForSeconds(3f);
 

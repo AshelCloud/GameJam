@@ -37,13 +37,25 @@ public class Chat : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         if(m_EndIsClose)
         {
             gameObject.SetActive(false);
             txt_Chat.text = "";
         }
+    }
+
+    public void OpenWithWait(string text, Action<bool> callback, bool endIsClose = true)
+    {
+        txt_Chat.text = "";
+
+        m_EndIsClose = endIsClose;
+        m_OriginText = text;
+        m_CurrentText = "";
+        gameObject.SetActive(true);
+
+        StartCoroutine(TextOpenAndWait(text, callback, endIsClose));
     }
 
     public IEnumerator TextOpenAndWait(string text, Action<bool> callback, bool endIsClose = true)
@@ -60,10 +72,10 @@ public class Chat : MonoBehaviour
 
             txt_Chat.text = m_CurrentText;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         if (m_EndIsClose)
         {

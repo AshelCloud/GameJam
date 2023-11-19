@@ -19,12 +19,9 @@ public class GameScene : MonoBehaviour
     {
         if(hasOnce == false)
         {
-            playerScript.playScript = false;
             yield return new WaitForSeconds(7f);
-            chat.gameObject.SetActive(true);
-            chat.StartCoroutine(chat.TextOpenAndWait("내 해킹 실력을 보여주마", (finished) => { if(finished) playerScript.playScript = true; })) ;
-            //chat.Open("내 해킹 실력을 보여주마");
-            //playerScript.playScript = true;
+            playerScript.playScript = false;
+            chat.OpenWithWait("내 해킹 실력을 보여주마", (finished) => { if(finished) playerScript.playScript = true; });
 
             hasOnce = true;
         }
