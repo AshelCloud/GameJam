@@ -76,18 +76,34 @@ public class Lazor : MonsterObject
             switch (state)
             {
                 case LazorState.ON:
-                    transform.GetComponent<SpriteRenderer>().enabled = false;
-                    transform.Find("PerceptionRange").gameObject.transform.GetComponent<BoxCollider2D>().enabled = false;
-                    state = LazorState.OFF;
+                    LaserOff();
                     yield return new WaitForSeconds(offTime);
                     break;
                 case LazorState.OFF:
-                    transform.GetComponent<SpriteRenderer>().enabled = true;
-                    transform.Find("PerceptionRange").gameObject.transform.GetComponent<BoxCollider2D>().enabled = true;
-                    state = LazorState.ON;
+                    LaserOn();
                     yield return new WaitForSeconds(onTime);
                     break;
             }
         }    
+    }
+
+    void LaserOn()
+    {
+        transform.GetComponent<SpriteRenderer>().enabled = true;
+        transform.Find("PerceptionRange").gameObject.transform.GetComponent<BoxCollider2D>().enabled = true;
+        state = LazorState.ON;
+    }
+
+    void LaserOff()
+    {
+        transform.GetComponent<SpriteRenderer>().enabled = false;
+        transform.Find("PerceptionRange").gameObject.transform.GetComponent<BoxCollider2D>().enabled = false;
+        state = LazorState.OFF;
+    }
+
+    public void StopLaser()
+    {
+        StopAllCoroutines();
+        LaserOff();
     }
 }

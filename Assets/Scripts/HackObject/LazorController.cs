@@ -33,6 +33,7 @@ public class LazorController : HackableObject
     private void Disable()
     {
         transform.GetComponent<SpriteRenderer>().sprite = sprites[1];
+
         controlledLazor.SetActive(false);
     }
 
@@ -50,5 +51,10 @@ public class LazorController : HackableObject
     private void AttackBoss()
     {
         Instantiate(Resources.Load("Objects/BossAttack_Lazer"), transform.position, Quaternion.identity);
+    }
+
+    private void OnDestroy()
+    {
+        controlledLazor.GetComponent<Lazor>().StopLaser();
     }
 }
