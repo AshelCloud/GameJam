@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObj: {fileID: 8987903795644150946, guid: 2847b09264b4d5c4da224f10f79438d4, type: 3}
+  effectClip: {fileID: 8300000, guid: 81dd65e4dfd334f42befc4ca59ca9e24, type: 3}
 --- !u!1 &3555167317015495245
 GameObject:
   m_ObjectHideFlags: 0

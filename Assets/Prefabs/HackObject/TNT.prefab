@@ -186,3 +186,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObj: {fileID: 8661698299739735812, guid: 99ebc568e6b345448af22a6a45bab5cc, type: 3}
+  effectClip: {fileID: 8300000, guid: 81dd65e4dfd334f42befc4ca59ca9e24, type: 3}

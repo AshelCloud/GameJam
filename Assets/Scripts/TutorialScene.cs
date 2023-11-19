@@ -17,6 +17,9 @@ public class TutorialScene : MonoBehaviour
     Player playerScript;
     private HologramThrow hologram;
 
+    [SerializeField]
+    private AudioClip bgm;
+
     private void Awake()
     {
         Instance = this;
@@ -33,6 +36,8 @@ public class TutorialScene : MonoBehaviour
 
             StartCoroutine(StartChat());
         }
+
+        SoundManager.Instance.PlayBGM(bgm);
     }
 
     private IEnumerator StartChat()

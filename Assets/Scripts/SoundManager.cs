@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     private AudioSource m_AudioSource;
+    private AudioSource m_EffectSource;
 
     public static SoundManager Instance;
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -24,11 +25,38 @@ public class SoundManager : MonoBehaviour
         if (m_AudioSource == null)
         {
             m_AudioSource = gameObject.AddComponent<AudioSource>();
+            m_EffectSource = gameObject.AddComponent<AudioSource>();
         }
     }
 
-    public void PlayClip(AudioClip clip)
+    public void PlayEffectClip(AudioClip clip)
     {
-        m_AudioSource.PlayOneShot(clip);
+        m_EffectSource.Stop();
+        m_EffectSource.clip = clip;
+        m_EffectSource.Play();
+    }
+
+    public void StopEffectClip()
+    {
+        m_EffectSource.Stop();
+        m_EffectSource.clip = null;
+    }
+
+    public void PlayEffectOneShot(AudioClip clip)
+    {
+        m_EffectSource.PlayOneShot(clip);
+    }
+
+
+    public void PlayBGM(AudioClip clip)
+    {
+        m_AudioSource.clip = clip;
+        m_AudioSource.Play();
+    }
+
+    public void StopBGM()
+    {
+        m_AudioSource.Stop();
+        m_AudioSource.clip = null;
     }
 }

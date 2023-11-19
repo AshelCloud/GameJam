@@ -101,12 +101,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HackingButtonPrefab: {fileID: 6768926875319442544, guid: c14c595b48d603248a677715c185e9fd, type: 3}
+  hackedColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
   sprites:
   - {fileID: 21300000, guid: 84af4c552c7fc8343b5445ee471b887d, type: 3}
   - {fileID: 21300000, guid: f730d375098b4124793d6dabac58494f, type: 3}
   m_ControlledDrones:
   - {fileID: 0}
-  hackedColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
 --- !u!114 &9029146484192128679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleObj: {fileID: 6454226686028506981, guid: 12141fbac30eed64db3d34abb3fa31a9, type: 3}
+  effectClip: {fileID: 8300000, guid: 81dd65e4dfd334f42befc4ca59ca9e24, type: 3}
 --- !u!61 &3463910599078260011
 BoxCollider2D:
   m_ObjectHideFlags: 0

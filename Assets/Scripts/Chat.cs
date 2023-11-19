@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class Chat : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip clip;
+
+    [SerializeField]
     private TMP_Text txt_Chat;
     private string m_OriginText;
     private string m_CurrentText;
@@ -66,6 +69,8 @@ public class Chat : MonoBehaviour
         m_OriginText = text;
         m_CurrentText = "";
 
+        SoundManager.Instance.PlayEffectClip(clip);
+
         foreach (var ch in m_OriginText)
         {
             m_CurrentText += ch;
@@ -74,6 +79,7 @@ public class Chat : MonoBehaviour
 
             yield return new WaitForSeconds(0.03f);
         }
+        SoundManager.Instance.StopEffectClip();
 
         yield return new WaitForSeconds(1f);
 
