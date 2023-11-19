@@ -17,6 +17,7 @@ public class HologramThrow : MonoBehaviour
     private int maxusedHg = 3; //최대 던지는 횟수
 
     public Color notthingColor;
+    public bool playScript = true;
 
     private void Start()
     {
@@ -25,6 +26,9 @@ public class HologramThrow : MonoBehaviour
     }
     private void Update()
     {
+        if (!playScript)
+            return;
+
         // 마우스 왼쪽 버튼을 클릭하면 홀로그램을 던집니다.
         if (Input.GetMouseButtonDown(0))
         {
