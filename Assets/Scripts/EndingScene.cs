@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class EndingScene : MonoBehaviour
@@ -44,6 +45,10 @@ public class EndingScene : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         chat.Open("난 이제 생체실험에서 벗어난 자유의 몸이다!!!!!!!!!", false);
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene("Credit");
     }
 
     private IEnumerator ZoomIn()
