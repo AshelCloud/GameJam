@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 500
+  laserClip: {fileID: 8300000, guid: 6bbf09457151560499fca8073987e2e5, type: 3}
 --- !u!136 &-6070691343475790110
 CapsuleCollider:
   m_ObjectHideFlags: 0

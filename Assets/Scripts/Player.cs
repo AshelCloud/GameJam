@@ -67,7 +67,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (!playScript)
+        {
             return;
+        }
 
         if (SceneManager.GetActiveScene().name == "Game_Boss")
         {
@@ -85,7 +87,10 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (!playScript)
+        {
+            m_Animator.SetBool("Walk", false);
             return;
+        }
 
         if (SceneManager.GetActiveScene().name == "Game_Boss")
         {
@@ -230,6 +235,7 @@ public class Player : MonoBehaviour
         if(m_IsDie == false)
         {
             m_IsDie = true;
+            m_Rigidbody.bodyType = RigidbodyType2D.Static;
             StartCoroutine(StartDie());
         }
     }
