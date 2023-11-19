@@ -25,6 +25,7 @@ public class SoundManager : MonoBehaviour
         if (m_AudioSource == null)
         {
             m_AudioSource = gameObject.AddComponent<AudioSource>();
+            m_AudioSource.loop = true;
             m_EffectSource = gameObject.AddComponent<AudioSource>();
         }
     }

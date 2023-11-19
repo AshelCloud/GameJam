@@ -69,5 +69,9 @@ public class StageScene : MonoBehaviour
         {
             SoundManager.Instance.PlayBGM(bgm);
         }
+        else if(stageNum == 3)
+        {
+            SoundManager.Instance.PlayBGM(bgm);
+        }
     }
 }
