@@ -27,7 +27,7 @@ public class Platform : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
+    { 
         playerCheck = true;
     }
 
