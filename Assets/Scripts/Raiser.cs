@@ -13,6 +13,9 @@ public class Raiser : MonoBehaviour
 
     private Vector3 dir = Vector3.zero;
 
+    [SerializeField]
+    private AudioClip laserClip;
+
     private void Start()
     {
         m_Target = GameObject.Find("Player").GetComponent<Player>();
@@ -45,6 +48,7 @@ public class Raiser : MonoBehaviour
 
     private IEnumerator Damage()
     {
+        SoundManager.Instance.PlayEffectOneShot(laserClip);
         yield return new WaitForSeconds(0.5f);
 
         m_Target.Die();

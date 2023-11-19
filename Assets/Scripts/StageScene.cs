@@ -12,10 +12,13 @@ public class StageScene : MonoBehaviour
     [SerializeField] private float zoomInTime = 0.5f;
     [SerializeField] private float zoomOutSize = 25f;
     [SerializeField] private Vector3 zoomOutPos;
+    [SerializeField] private int stageNum;
 
     private Vector3 startPos;
     private static bool hasOnce = false;
 
+    [SerializeField]
+    private AudioClip bgm;
     private void Awake()
     {
         Instance = this;
@@ -23,7 +26,7 @@ public class StageScene : MonoBehaviour
 
     private IEnumerator Start()
     {
-        if (hasOnce == false)
+        if (hasOnce == false && stageNum == 1)
         {
             Camera.main.GetComponent<FollowCamera>().enabled = false;
             float startSize = Camera.main.orthographicSize;
@@ -60,6 +63,11 @@ public class StageScene : MonoBehaviour
             Camera.main.orthographicSize = startSize;
 
             hasOnce = true;
+            SoundManager.Instance.PlayBGM(bgm);
+        }
+        else if (stageNum == 2)
+        {
+            SoundManager.Instance.PlayBGM(bgm);
         }
     }
 }

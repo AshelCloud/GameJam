@@ -19208,6 +19208,7 @@ GameObject:
   - component: {fileID: 2037575058108773061}
   - component: {fileID: 1931139034815710152}
   - component: {fileID: 6747796978493845042}
+  - component: {fileID: 7531702643280491877}
   m_Layer: 0
   m_Name: Strong_Explosion
   m_TagString: Untagged
@@ -24129,6 +24130,19 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 1
   fadeOutReference: {fileID: 0}
+--- !u!114 &7531702643280491877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6684921207069241764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695cf6380e234f444a93b407a2dbba5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionSound: {fileID: 8300000, guid: 29d1adc014c7c394d8dd51e753f0169c, type: 3}
 --- !u!1 &6691959109278614979
 GameObject:
   m_ObjectHideFlags: 0

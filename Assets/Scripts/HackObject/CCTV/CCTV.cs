@@ -17,6 +17,9 @@ public class CCTV : HackableObject
     private float originalSize;
     public bool isHacked;
 
+    [SerializeField]
+    private AudioClip zoomClip;
+
     private void Awake()
     {
         isHacked = false;
@@ -35,6 +38,7 @@ public class CCTV : HackableObject
 
     IEnumerator ZoomCamera()
     {
+        SoundManager.Instance.PlayEffectOneShot(zoomClip);
         float time = 0f;
         while (time < zoomOutTime) 
         {
@@ -56,6 +60,7 @@ public class CCTV : HackableObject
         zoomPanel.GetComponent<CCTVPanel>().borderFill.fillAmount = 1f;
         zoomPanel.SetActive(false);
 
+        SoundManager.Instance.PlayEffectOneShot(zoomClip);
         time = 0f;
         while(time < zoomInTime)
         {
