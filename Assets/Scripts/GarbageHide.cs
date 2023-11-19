@@ -42,7 +42,7 @@ public class GarbageHide : MonoBehaviour
 
     void Update()
     {
-        if (hasCollided && Input.GetKeyDown(KeyCode.E))
+        if (!player.m_IsDie &&  hasCollided && Input.GetKeyDown(KeyCode.E))
         {
             if (isPlayerActive)
             {
