@@ -32,7 +32,7 @@ public class Chat : MonoBehaviour
 
             txt_Chat.text = m_CurrentText;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
         }
 
         yield return new WaitForSeconds(0.5f);
