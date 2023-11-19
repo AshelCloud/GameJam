@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private LayerMask m_GrondLayerMask;
+    [SerializeField]
+    private LayerMask m_PlatformLayerMask;
 
     private void Awake()
     {
@@ -187,7 +190,7 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        bool ret = Physics2D.Raycast(transform.position, -Vector3.up, m_DistToGround, m_GrondLayerMask);
+        bool ret = Physics2D.Raycast(transform.position, -Vector3.up, m_DistToGround, m_GrondLayerMask + m_PlatformLayerMask);
 
         return ret;
     }
