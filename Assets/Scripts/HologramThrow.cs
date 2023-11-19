@@ -33,6 +33,7 @@ public class HologramThrow : MonoBehaviour
                 GameObject grenadeInstance = Instantiate(grenadePrefab, throwtf.position, Quaternion.identity);
                 currentusedHG++;
                 ChangeSprite();
+                //여기에서 UI가시성 추가해야함.
             }
         }
     }

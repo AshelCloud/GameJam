@@ -55,34 +55,4 @@ public class StageScene : MonoBehaviour
             }
         }
     }
-
-    private void Update()
-    {
-        if(fadein == true)
-        {
-            if (player != null)
-            {
-                Vector3 directionToPlayer = player.position - transform.position;
-                float distanceToPlayer = directionToPlayer.magnitude;
-
-                if (distanceToPlayer > 0.1f)
-                {
-                    // 플레이어 쪽으로 일정 속도로 이동
-                    Vector3 moveVector = directionToPlayer.normalized * moveSpeed * Time.deltaTime;
-
-                    // 이동할 거리가 남은 거리보다 크다면 플레이어 위치로 이동
-                    if (moveVector.magnitude > distanceToPlayer)
-                    {
-
-                        transform.position = player.position;
-                    }
-                    else
-                    {
-                        transform.position += moveVector;
-                        stageStart = true;
-                    }
-                }
-            }
-        }
-    }
 }
