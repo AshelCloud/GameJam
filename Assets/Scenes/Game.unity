@@ -5212,6 +5212,10 @@ PrefabInstance:
       propertyPath: m_ClimingSpeed
       value: 11.41
       objectReference: {fileID: 0}
+    - target: {fileID: 4412739029663155135, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
+      propertyPath: m_PlatformLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 4515804762503203056, guid: 66f0f77b1d8629f45a3fd8b80266600b, type: 3}
       propertyPath: m_Layer
       value: 7
