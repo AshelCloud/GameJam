@@ -26,6 +26,8 @@ public class CreeperSpawner : MonoBehaviour
 
         GameObject go = Instantiate(m_CreeperPrefab, new Vector3(X, transform.position.y), Quaternion.identity);
 
+        go.GetComponent<CreeperBomb>().GetComponentInChildren<CreeperPatrol>().isRandomPatrol = true;
+
         Destroy(go.gameObject, 5f);
     }
 }
