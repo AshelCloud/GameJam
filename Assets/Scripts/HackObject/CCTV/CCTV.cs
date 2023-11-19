@@ -45,7 +45,15 @@ public class CCTV : HackableObject
         Camera.main.orthographicSize = zommOutSize;
 
         zoomPanel.SetActive(true);
-        yield return new WaitForSeconds(zoomOutStayTime);
+
+        time = 0f;
+        while (time < zoomOutStayTime)
+        {
+            zoomPanel.GetComponent<CCTVPanel>().borderFill.fillAmount = Mathf.Lerp(0f, 1f, time / zoomOutStayTime);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        zoomPanel.GetComponent<CCTVPanel>().borderFill.fillAmount = 1f;
         zoomPanel.SetActive(false);
 
         time = 0f;
