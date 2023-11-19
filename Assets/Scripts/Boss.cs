@@ -45,9 +45,18 @@ public class Boss : MonoBehaviour
     [SerializeField]
     private AudioClip pattern2;
 
+    [SerializeField]
+    private GameObject hpBar;
+
+    [SerializeField]
+    private GameObject hackButton;
+
     private Animator m_Animator;
 
     private bool m_IsAttacking = false;
+
+    public float MaxHP = 200f;
+    public float CurHP = 200f;
 
     private Vector3 dir = Vector3.zero;
 
@@ -242,6 +251,25 @@ public class Boss : MonoBehaviour
 
     public void GetDamage(float damage)
     {
+        Vector3 scale = hpBar.transform.localScale;
+
+        CurHP -= damage;
+
+        scale.x = CurHP / MaxHP;
+
+        hpBar.transform.localScale = scale; 
+
+        if(0f >= CurHP)
+        {
+            scale.x = 0f;
+            hpBar.transform.localScale = scale;
+
+            hackButton.SetActive(true);
+
+            StopAllCoroutines();
+
+        }
+
         StartCoroutine(RedBlink());
     }
 

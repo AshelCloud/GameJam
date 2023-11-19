@@ -17,7 +17,7 @@ public class EndingScene : MonoBehaviour
         {
             Color color = m_BG.GetComponent<SpriteRenderer>().color;
 
-            float amount = 5f * Time.deltaTime;
+            float amount = 1f * Time.deltaTime;
             color.r -= amount;
             color.g -= amount;
             color.b -= amount;
@@ -25,6 +25,9 @@ public class EndingScene : MonoBehaviour
             m_BG.GetComponent<SpriteRenderer>().color = color;
             yield return new WaitForSeconds(0.1f);
         }
+
+        yield return new WaitForSeconds(2.5f);
+
         StartCoroutine(ZoomIn());
 
         GameObject.Find("Boss").GetComponent<Animator>().SetBool("Die", true);
