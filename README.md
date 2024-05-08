@@ -1,5 +1,7 @@
 # HackingRat
 호서대학교 게임잼 1등한 프로젝트
+![2](https://github.com/AshelCloud/HackingRat/assets/40396162/f3eccd8b-f441-4f61-815d-65f0d085f8c8)
+![1](https://github.com/AshelCloud/HackingRat/assets/40396162/7633f496-3a69-4c7e-aed1-8b473f1a592b)
 
 
 ## Video
