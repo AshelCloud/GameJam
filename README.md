@@ -1,6 +1,9 @@
-# GameJam
+# HackingRat
+호서대학교 게임잼 1등한 프로젝트
 
-## 디렉토리
+
+## Video
+[![HackingRat](http://img.youtube.com/vi/9-J5LQUx7vg/0.jpg)](https://youtu.be/9-J5LQUx7vg?si=F39mksz97dswaSPP)
 
 ## 개발
 기본적인 개발 브랜치 전략은 [gitflow](http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/) 관례를 따릅니다.
